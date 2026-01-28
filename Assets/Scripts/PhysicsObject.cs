@@ -11,6 +11,6 @@ public class PhysicsObject : MonoBehaviour
         float distance = Vector3.Distance(origin, transform.position);
         float distScalar = 1 / (distance * distance);
         
-        rb.AddExplosionForce(force * distScalar, origin, 0, 0, ForceMode.Impulse);
+        rb.linearVelocity += (rb.centerOfMass - origin).normalized * force * distScalar / rb.mass;
     }
 }

@@ -38,10 +38,10 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                float _distance = Vector3.Distance(origin, bone.RB.centerOfMass);
-                float _distScalar = 1 / (_distance * _distance);
+                float distance = Vector3.Distance(origin, bone.RB.centerOfMass);
+                float distScalar = 1 / (distance * distance);
 
-                if (force * _distScalar > impulseThreshold) SetActive();
+                if (force * distScalar > impulseThreshold) SetActive();
 
                 if (ragdoll) break;
             }
@@ -51,10 +51,11 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                float _distance = Vector3.Distance(origin, bone.RB.centerOfMass);
-                float _distScalar = 1 / (_distance * _distance);
+                float distance = Vector3.Distance(origin, bone.RB.centerOfMass);
+                float distScalar = 1 / (distance * distance);
         
-                bone.RB.AddExplosionForce(force * _distScalar, origin, 0, 0, ForceMode.Impulse);
+                //bone.RB.AddExplosionForce(force * _distScalar, origin, 0, 0, ForceMode.Impulse);
+                bone.RB.linearVelocity += (bone.RB.centerOfMass - origin).normalized * force * distScalar / bone.RB.mass;
             }
         }
     }
