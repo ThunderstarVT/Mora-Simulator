@@ -124,8 +124,8 @@ public class Ragdoll : PhysicsObject
             Rigidbody this_rb = contact.thisCollider.GetComponent<Rigidbody>();
             Rigidbody other_rb = contact.otherCollider.GetComponent<Rigidbody>();
             
-            this_rb.AddForceAtPosition(-contact.impulse * this_rb.mass / other_rb.mass, contact.point, ForceMode.Impulse);
-            other_rb.AddForceAtPosition(-contact.impulse * this_rb.mass / other_rb.mass, contact.point, ForceMode.Impulse);
+            this_rb.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+            other_rb.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
         }
     }
 
