@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Internal;
+using UnityEngine.Serialization;
+
+[RequireComponent(typeof(Animator))]
+public class Ragdoll : PhysicsObject
+{
+    [Header("Required Components (Ragdoll)")]
+    [SerializeField] private Animator anim;
+    
+    
+    [Space][Header("Settings (Ragdoll)")]
+    [SerializeField] private bool ragdoll;
+    
+    [Space]
+    [SerializeField] private Transform root;
+    [SerializeField] private List<RagdollBone> bones;
+    
+    [Space]
+    [SerializeField, Min(0f)] private float impulseThreshold = 50f;
+
+    
+    protected void Awake()
+    {
+        foreach (RagdollBone bone in bones)
+        {
+            bone.OnCollisionEnterEvent += OnCollisionEnter;
+        }
+    }
+
+
+    public override void AddExplosionForce(float force, Vector3 origin)
+    {
+        if (!ragdoll)
+        {
+            foreach (RagdollBone bone in bones)
+            {
+                float _distance = Vector3.Distance(origin, bone.rb.centerOfMass);
+                float _distScalar = 1 / (_distance * _distance);
+
+                if (force * _distScalar > impulseThreshold) SetActive();
+
+                if (ragdoll) break;
+            }
+        }
+
+        if (!ragdoll) return;
+        {
+            foreach (RagdollBone bone in bones)
+            {
+                float _distance = Vector3.Distance(origin, bone.rb.centerOfMass);
+                float _distScalar = 1 / (_distance * _distance);
+        
+                bone.rb.AddExplosionForce(force * _distScalar, origin, 0, 0, ForceMode.Impulse);
+            }
+        }
+    }
+
+
+    public void SetActive()
+    {
+        if (ragdoll) return;
+        
+        ragdoll = true;
+        
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
+        foreach (RagdollBone bone in bones)
+        {
+            bone.rb.isKinematic = false;
+            bone.rb.useGravity = true;
+        }
+            
+        anim.enabled = false;
+    }
+    
+    public void SetInactive()
+    {
+        if (!ragdoll) return;
+        
+        ragdoll = false;
+        
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
+        foreach (RagdollBone bone in bones)
+        {
+            bone.rb.isKinematic = true;
+            bone.rb.useGravity = false;
+        }
+            
+        anim.enabled = true;
+            
+        Vector3 sum = bones.Aggregate(Vector3.zero, (current, bone) => current + bone.rb.position);
+        sum /= bones.Count;
+
+        root.position = sum;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(collision.impulse.magnitude);
+        
+        bool applyImpulse = false;
+        
+        if (collision.impulse.magnitude > impulseThreshold)
+        {
+            applyImpulse = !ragdoll;
+            
+            SetActive();
+        }
+
+        if (!applyImpulse) return;
+
+        // this works... don't ask me why tho...
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Rigidbody this_rb = contact.thisCollider.GetComponent<Rigidbody>();
+            Rigidbody other_rb = contact.otherCollider.GetComponent<Rigidbody>();
+            
+            this_rb.AddForceAtPosition(-contact.impulse * this_rb.mass / other_rb.mass, contact.point, ForceMode.Impulse);
+            other_rb.AddForceAtPosition(-contact.impulse * this_rb.mass / other_rb.mass, contact.point, ForceMode.Impulse);
+        }
+    }
+
+
+    private void OnValidate()
+    {
+        if (ragdoll)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+
+            foreach (RagdollBone bone in bones)
+            {
+                bone.rb.isKinematic = false;
+                bone.rb.useGravity = true;
+            }
+            
+            anim.enabled = false;
+        }
+        else
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+
+            foreach (RagdollBone bone in bones)
+            {
+                bone.rb.isKinematic = true;
+                bone.rb.useGravity = false;
+            }
+            
+            anim.enabled = true;
+        }
+    }
+}
