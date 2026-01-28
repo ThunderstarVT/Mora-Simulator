@@ -32,16 +32,22 @@ public class Ragdoll : PhysicsObject
     }
 
 
-    public override void AddExplosionForce(float force, Vector3 origin)
+    public override void AddExplosionForce(float power, Vector3 origin)
     {
         if (!ragdoll)
         {
             foreach (RagdollBone bone in bones)
             {
-                float distance = Vector3.Distance(origin, bone.RB.centerOfMass);
-                float distScalar = 1 / (distance * distance);
+                Vector3 com = bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass;
+        
+                Vector3 toObject = com - origin;
+                float dist = toObject.magnitude;
+        
+                float falloff = 1 / (dist * dist);
 
-                if (force * distScalar > impulseThreshold) SetActive();
+                if (power * falloff > impulseThreshold) SetActive();
+                
+                Debug.Log(bone.name + ": " + (power * falloff));
 
                 if (ragdoll) break;
             }
@@ -51,11 +57,15 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                float distance = Vector3.Distance(origin, bone.RB.centerOfMass);
-                float distScalar = 1 / (distance * distance);
+                Vector3 com = bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass;
         
-                //bone.RB.AddExplosionForce(force * _distScalar, origin, 0, 0, ForceMode.Impulse);
-                bone.RB.linearVelocity += (bone.RB.centerOfMass - origin).normalized * force * distScalar / bone.RB.mass;
+                Vector3 toObject = com - origin;
+                float dist = toObject.magnitude;
+                Vector3 direction = toObject.normalized;
+        
+                float falloff = 1 / (dist * dist);
+        
+                bone.RB.linearVelocity += power * direction * falloff / bone.RB.mass;
             }
         }
     }
@@ -106,26 +116,10 @@ public class Ragdoll : PhysicsObject
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.impulse.magnitude);
-        
-        bool applyImpulse = false;
-        
+
         if (collision.impulse.magnitude > impulseThreshold)
         {
-            applyImpulse = !ragdoll;
-            
             SetActive();
-        }
-
-        if (!applyImpulse) return;
-
-        // this works... don't ask me why tho...
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Rigidbody this_rb = contact.thisCollider.GetComponent<Rigidbody>();
-            Rigidbody other_rb = contact.otherCollider.GetComponent<Rigidbody>();
-            
-            this_rb.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
-            other_rb.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
         }
     }
 
