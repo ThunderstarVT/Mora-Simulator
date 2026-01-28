@@ -38,7 +38,7 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                float _distance = Vector3.Distance(origin, bone.rb.centerOfMass);
+                float _distance = Vector3.Distance(origin, bone.RB.centerOfMass);
                 float _distScalar = 1 / (_distance * _distance);
 
                 if (force * _distScalar > impulseThreshold) SetActive();
@@ -51,10 +51,10 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                float _distance = Vector3.Distance(origin, bone.rb.centerOfMass);
+                float _distance = Vector3.Distance(origin, bone.RB.centerOfMass);
                 float _distScalar = 1 / (_distance * _distance);
         
-                bone.rb.AddExplosionForce(force * _distScalar, origin, 0, 0, ForceMode.Impulse);
+                bone.RB.AddExplosionForce(force * _distScalar, origin, 0, 0, ForceMode.Impulse);
             }
         }
     }
@@ -71,8 +71,8 @@ public class Ragdoll : PhysicsObject
 
         foreach (RagdollBone bone in bones)
         {
-            bone.rb.isKinematic = false;
-            bone.rb.useGravity = true;
+            bone.RB.isKinematic = false;
+            bone.RB.useGravity = true;
         }
             
         anim.enabled = false;
@@ -89,13 +89,13 @@ public class Ragdoll : PhysicsObject
 
         foreach (RagdollBone bone in bones)
         {
-            bone.rb.isKinematic = true;
-            bone.rb.useGravity = false;
+            bone.RB.isKinematic = true;
+            bone.RB.useGravity = false;
         }
             
         anim.enabled = true;
             
-        Vector3 sum = bones.Aggregate(Vector3.zero, (current, bone) => current + bone.rb.position);
+        Vector3 sum = bones.Aggregate(Vector3.zero, (current, bone) => current + bone.RB.position);
         sum /= bones.Count;
 
         root.position = sum;
@@ -138,8 +138,8 @@ public class Ragdoll : PhysicsObject
 
             foreach (RagdollBone bone in bones)
             {
-                bone.rb.isKinematic = false;
-                bone.rb.useGravity = true;
+                bone.RB.isKinematic = false;
+                bone.RB.useGravity = true;
             }
             
             anim.enabled = false;
@@ -151,8 +151,8 @@ public class Ragdoll : PhysicsObject
 
             foreach (RagdollBone bone in bones)
             {
-                bone.rb.isKinematic = true;
-                bone.rb.useGravity = false;
+                bone.RB.isKinematic = true;
+                bone.RB.useGravity = false;
             }
             
             anim.enabled = true;
