@@ -20,7 +20,8 @@ public class Ragdoll : PhysicsObject
     [SerializeField] private List<RagdollBone> bones;
     
     [Space]
-    [SerializeField, Min(0f)] private float impulseThreshold = 50f;
+    [SerializeField, Min(0f)] private float impulseThreshold = 20f;
+    [SerializeField, Min(0f)] private float explosionThreshold = 2.5f;
 
     
     protected void Awake()
@@ -43,11 +44,9 @@ public class Ragdoll : PhysicsObject
                 Vector3 toObject = com - origin;
                 float dist = toObject.magnitude;
         
-                float falloff = 1 / (dist * dist);
+                float falloff = 1 / (dist * dist + 1);
 
-                if (power * falloff > impulseThreshold) SetActive();
-                
-                Debug.Log(bone.name + ": " + (power * falloff));
+                if (Mathf.Abs(power) * falloff > explosionThreshold) SetActive();
 
                 if (ragdoll) break;
             }

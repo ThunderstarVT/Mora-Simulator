@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField, Min(0f)] private float power = 5000f;
+    [SerializeField] private float power = 5000f;
 
     private void Start()
     {

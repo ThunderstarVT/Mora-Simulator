@@ -14,7 +14,7 @@ public class PhysicsObject : MonoBehaviour
         float dist = toObject.magnitude;
         Vector3 direction = toObject.normalized;
         
-        float falloff = 1 / (dist * dist);
+        float falloff = 1 / (dist * dist + 1);
         
         rb.linearVelocity += power * direction * falloff / rb.mass;
     }
