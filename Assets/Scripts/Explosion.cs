@@ -1,4 +1,5 @@
-using System;
+using Unity.Mathematics;
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -7,7 +8,7 @@ public class Explosion : MonoBehaviour
 
     private void Start()
     {
-        foreach (PhysicsObject physicsObject in FindObjectsByType<PhysicsObject>(FindObjectsSortMode.None))
+        foreach (PhysicsObject physicsObject in PhysicsObject.Instances)
         {
             physicsObject.AddExplosionForce(power, transform.position);
         }

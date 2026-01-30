@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,7 +9,11 @@ public class RagdollBone : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     
     public Rigidbody RB => rb;
-
+    
+    [Header("")]
+    [SerializeField] private new Collider collider;
+    
+    public Collider Collider => collider;
 
     private void OnCollisionEnter(Collision collision)
     {

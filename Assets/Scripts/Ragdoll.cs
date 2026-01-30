@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics.Geometry;
 using UnityEngine;
-using UnityEngine.Internal;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator))]
 public class Ragdoll : PhysicsObject
@@ -12,7 +11,7 @@ public class Ragdoll : PhysicsObject
     [SerializeField] private Animator anim;
     
     
-    [Space][Header("Settings (Ragdoll)")]
+    [Header("Settings (Ragdoll)")]
     [SerializeField] private bool ragdoll;
     
     [Space]
@@ -66,6 +65,21 @@ public class Ragdoll : PhysicsObject
         
                 bone.RB.linearVelocity += power * direction * falloff / bone.RB.mass;
             }
+        }
+    }
+
+    public override void AddBuoyantForce(Bounds volume, float density)
+    {
+        //TODO: remove once fully implemented
+        Debug.LogException(new NotImplementedException(), this);
+        
+        // loop over every bone that intersects with the volume
+        foreach (var bone in bones.Where(bone => bone.Collider.bounds.Intersects(volume)))
+        {
+            float force = 0f; // volume * density * gravity (* scalar if needed)
+            Vector3 cov = Vector3.zero; // center of volume
+            
+            bone.RB.AddForceAtPosition(force * Vector3.up, cov);
         }
     }
 
