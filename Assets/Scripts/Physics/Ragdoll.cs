@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Singletons;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Animator))]
 public class Ragdoll : PhysicsObject
@@ -68,18 +70,48 @@ public class Ragdoll : PhysicsObject
         }
     }
 
-    public override void AddBuoyantForce(Bounds volume, float density)
+    public override void AddBuoyantForceAndDrag(Bounds volume, float density, Vector3 velocity)
     {
-        //TODO: remove once fully implemented
-        Debug.LogException(new NotImplementedException(), this);
-        
         // loop over every bone that intersects with the volume
         foreach (var bone in bones.Where(bone => bone.Collider.bounds.Intersects(volume)))
         {
-            float force = 0f; // volume * density * gravity (* scalar if needed)
-            Vector3 cov = Vector3.zero; // center of volume
+            // get the AABB of the intersection of the fluid and the collider's bounds
+            Bounds intersectBounds = new Bounds();
+            intersectBounds.SetMinMax(
+                new Vector3(
+                    Mathf.Max(volume.min.x, bone.Collider.bounds.min.x),
+                    Mathf.Max(volume.min.y, bone.Collider.bounds.min.y),
+                    Mathf.Max(volume.min.z, bone.Collider.bounds.min.z)),
+                new Vector3(
+                    Mathf.Min(volume.max.x, bone.Collider.bounds.max.x),
+                    Mathf.Min(volume.max.y, bone.Collider.bounds.max.y),
+                    Mathf.Min(volume.max.z, bone.Collider.bounds.max.z)));
             
-            bone.RB.AddForceAtPosition(force * Vector3.up, cov);
+            // create sample points
+            List<Vector3> samplePoints = Enumerable.Range(0, SettingsManager.Instance.BuoyancySamples >> 3).Select(_ => 
+                new Vector3(
+                    Random.Range(intersectBounds.min.x, intersectBounds.max.x), 
+                    Random.Range(intersectBounds.min.y, intersectBounds.max.y), 
+                    Random.Range(intersectBounds.min.z, intersectBounds.max.z))
+            ).ToList();
+            
+            // count how many are in any collider
+            List<Vector3> samplesInside = samplePoints.Where(s => bone.Collider.ClosestPoint(s) == s).ToList();
+        
+            // calculate the overlapping volume
+            float overlapVolume = BoundsVolume(intersectBounds) * samplesInside.Count / samplePoints.Count;
+            
+            // calculate buoyant force and centre of volume
+            Vector3 buoyantForce = -overlapVolume * density * Physics.gravity;
+            Vector3 cov = samplesInside.Aggregate(Vector3.zero, (sum, sample) => sum + sample) / samplesInside.Count; // center of volume (estimated as average of samples inside collider)
+
+            // get the velocity relative to the fluid
+            Vector3 relativeVelocity = bone.RB.linearVelocity - velocity;
+            
+            // estimate the drag force
+            Vector3 dragForce = relativeVelocity * (-density * Mathf.Pow(overlapVolume, 2f/3f));
+            
+            if ((buoyantForce + dragForce).magnitude > 0) bone.RB.AddForceAtPosition(buoyantForce + dragForce, cov);
         }
     }
 

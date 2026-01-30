@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6742416808322468004}
+  collider: {fileID: 9145369307297557951}
 --- !u!136 &9145369307297557951
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -420,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7658076688070787056}
+  collider: {fileID: 3506865188745186709}
 --- !u!136 &3506865188745186709
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -512,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4143497772800126760}
+  colliders: []
   anim: {fileID: 6172238655600732037}
   ragdoll: 0
   root: {fileID: 882416765408598578}
@@ -605,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2473902682720842580}
+  collider: {fileID: 427519761527055759}
 --- !u!136 &427519761527055759
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -678,6 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3483793478954227248}
+  collider: {fileID: 603566010043275580}
 --- !u!65 &603566010043275580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -744,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1939563245603350873}
+  collider: {fileID: 2524108724685359798}
 --- !u!136 &2524108724685359798
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -836,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 36076700514685648}
+  collider: {fileID: 3444846159269647471}
 --- !u!136 &3444846159269647471
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -976,6 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 151379110635316283}
+  collider: {fileID: 5361137289208997499}
 --- !u!136 &5361137289208997499
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1068,6 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1676628268728823656}
+  collider: {fileID: 5725226172251825720}
 --- !u!136 &5725226172251825720
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1160,6 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7791329320820307850}
+  collider: {fileID: 1157675710210497953}
 --- !u!136 &1157675710210497953
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1252,6 +1262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6455704562976564307}
+  collider: {fileID: 2765493716282983377}
 --- !u!136 &2765493716282983377
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1344,6 +1355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 255757356535427076}
+  collider: {fileID: 2976747857169944164}
 --- !u!136 &2976747857169944164
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1436,6 +1448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5950315939427029003}
+  collider: {fileID: 777548168558296016}
 --- !u!136 &777548168558296016
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1528,6 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3061004012089843158}
+  collider: {fileID: 3140780865507530113}
 --- !u!136 &3140780865507530113
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1625,6 +1639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3549634648185166874}
+  collider: {fileID: 9123180935316738428}
 --- !u!136 &9123180935316738428
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1717,6 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3264119830610530894}
+  collider: {fileID: 6797197395110796706}
 --- !u!65 &6797197395110796706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1783,6 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1121134585028247338}
+  collider: {fileID: 5269378910314440621}
 --- !u!136 &5269378910314440621
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1875,6 +1892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5855648683848209012}
+  collider: {fileID: 3886003040064387946}
 --- !u!136 &3886003040064387946
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1967,6 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9149781381056776231}
+  collider: {fileID: 7150660566101937622}
 --- !u!136 &7150660566101937622
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2107,6 +2126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5708798690415580130}
+  collider: {fileID: 3782897848147245154}
 --- !u!136 &3782897848147245154
 CapsuleCollider:
   m_ObjectHideFlags: 0
