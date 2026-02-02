@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6697648646319636908}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770056784342672964}
     - targetCorrespondingSourceObject: {fileID: -766917891154793864, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9149781381056776231}
@@ -563,6 +566,40 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1770056784342672964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577531826546517829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d433c02f443f460f8eb67392e7b39978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnTicks: 60
+  spreadRange: 1
+  colliders:
+  - {fileID: 7150660566101937622}
+  - {fileID: 9123180935316738428}
+  - {fileID: 3444846159269647471}
+  - {fileID: 3506865188745186709}
+  - {fileID: 9145369307297557951}
+  - {fileID: 5725226172251825720}
+  - {fileID: 3140780865507530113}
+  - {fileID: 5361137289208997499}
+  - {fileID: 6797197395110796706}
+  - {fileID: 1157675710210497953}
+  - {fileID: 777548168558296016}
+  - {fileID: 2524108724685359798}
+  - {fileID: 603566010043275580}
+  - {fileID: 2976747857169944164}
+  - {fileID: 3886003040064387946}
+  - {fileID: 3782897848147245154}
+  - {fileID: 2765493716282983377}
+  - {fileID: 5269378910314440621}
+  - {fileID: 427519761527055759}
 --- !u!1 &872905935225407824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8583992136507829436, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
