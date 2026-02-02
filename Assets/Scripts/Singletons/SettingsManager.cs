@@ -48,6 +48,10 @@ namespace Singletons
 
         
         public float MouseSense => Mathf.Pow(10f, Mathf.Lerp(-1f, 1f, mouseSense));
+
+        public float SfxVolume => sfxVolume;
+        public float MusicVolume => musicVolume;
+        public float VoiceVolume => voiceVolume;
         
         public int BuoyancySamples => buoyancyAccuracy switch
         {
