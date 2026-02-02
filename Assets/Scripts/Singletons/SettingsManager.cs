@@ -32,25 +32,30 @@ namespace Singletons
 
         private enum Options
         {
-            LOW,
-            MID,
-            HIGH
+            POTATO = -4,
+            LOW = -1,
+            MID = 0,
+            HIGH = 1
         }
         
-        [SerializeField] private Options buoyancyAccuracy = Options.LOW;
+        [SerializeField, Range(0f, 1f)] private float mouseSense = 0.5f;
+        [Space]
+        [SerializeField, Range(0f, 1f)] private float sfxVolume = 0.5f;
+        [SerializeField, Range(0f, 1f)] private float musicVolume = 0.5f;
+        [SerializeField, Range(0f, 1f)] private float voiceVolume = 0.5f;
+        [Space]
+        [SerializeField] private Options buoyancyAccuracy = Options.MID;
 
-        public int BuoyancySamples
+        
+        public float MouseSense => Mathf.Pow(10f, Mathf.Lerp(-1f, 1f, mouseSense));
+        
+        public int BuoyancySamples => buoyancyAccuracy switch
         {
-            get
-            {
-                return buoyancyAccuracy switch
-                {
-                    Options.LOW => 64,
-                    Options.MID => 128,
-                    Options.HIGH => 256,
-                    _ => 0
-                };
-            }
-        }
+            Options.POTATO => 8,
+            Options.LOW => 64,
+            Options.MID => 128,
+            Options.HIGH => 256,
+            _ => 0
+        };
     }
 }
