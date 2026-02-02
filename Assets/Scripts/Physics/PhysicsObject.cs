@@ -80,6 +80,9 @@ public class PhysicsObject : MonoBehaviour
         // count how many are in any collider
         List<Vector3> samplesInside = samplePoints.Where(s => interColliders.Any(c => c.ClosestPoint(s) == s)).ToList();
         
+        // return if no samples inside
+        if (samplesInside.Count == 0) return;
+        
         // calculate the overlapping volume
         float overlapVolume = BoundsVolume(intersectBounds) * samplesInside.Count / samplePoints.Count;
         

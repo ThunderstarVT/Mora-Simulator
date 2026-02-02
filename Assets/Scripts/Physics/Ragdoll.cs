@@ -95,9 +95,12 @@ public class Ragdoll : PhysicsObject
                     Random.Range(intersectBounds.min.z, intersectBounds.max.z))
             ).ToList();
             
-            // count how many are in any collider
+            // count how many are in the collider
             List<Vector3> samplesInside = samplePoints.Where(s => bone.Collider.ClosestPoint(s) == s).ToList();
         
+            // return if no samples inside
+            if (samplesInside.Count == 0) return;
+            
             // calculate the overlapping volume
             float overlapVolume = BoundsVolume(intersectBounds) * samplesInside.Count / samplePoints.Count;
             
