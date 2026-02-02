@@ -99,6 +99,9 @@ public class Ragdoll : PhysicsObject
             // return if no samples inside
             if (samplesInside.Count == 0) return;
             
+            // set ragdoll active when touching fluid
+            SetActive();
+            
             // calculate the overlapping volume
             float overlapVolume = BoundsVolume(intersectBounds) * samplesInside.Count / samplePoints.Count;
             
