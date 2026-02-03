@@ -89,8 +89,11 @@ public class PhysicsObject : MonoBehaviour
         Vector3 buoyantForce = -overlapVolume * density * Physics.gravity;
         Vector3 cov = samplesInside.Aggregate(Vector3.zero, (sum, sample) => sum + sample) / samplesInside.Count; // center of volume (estimated as average of samples inside collider)
         
+        // calculate velocity at centre of volume
+        Vector3 covVelocity = rb.GetPointVelocity(cov);
+        
         // get the velocity relative to the fluid
-        Vector3 relativeVelocity = rb.linearVelocity - velocity;
+        Vector3 relativeVelocity = covVelocity - velocity;
             
         // estimate the drag force
         Vector3 dragForce = relativeVelocity * (-density * relativeVelocity.magnitude * Mathf.Pow(overlapVolume, 2f/3f));
