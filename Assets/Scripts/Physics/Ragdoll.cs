@@ -32,6 +32,17 @@ public class Ragdoll : PhysicsObject
     }
 
 
+    public override Vector3 GetCenter()
+    {
+        return bones.Aggregate(Vector3.zero, (sum, bone) => sum + bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass) / bones.Count;
+    }
+
+    public override Vector3 GetVelocity()
+    {
+        return bones.Aggregate(Vector3.zero, (sum, bone) => sum + bone.RB.linearVelocity) / bones.Count;
+    }
+
+
     public override void AddExplosionForce(float power, Vector3 origin)
     {
         if (!ragdoll)
@@ -68,10 +79,18 @@ public class Ragdoll : PhysicsObject
         }
     }
 
+    public override void AddAcceleration(Vector3 acceleration)
+    {
+        foreach (RagdollBone bone in bones)
+        {
+            bone.AddAcceleration(acceleration);
+        }
+    }
+
     public override void AddBuoyantForceAndDrag(Bounds volume, float density, Vector3 velocity)
     {
         // loop over every bone that intersects with the volume
-        foreach (var bone in bones.Where(bone => bone.Collider.bounds.Intersects(volume)))
+        foreach (RagdollBone bone in bones.Where(bone => bone.Collider.bounds.Intersects(volume)))
         {
             // get the AABB of the intersection of the fluid and the collider's bounds
             Bounds intersectBounds = new Bounds();

@@ -26,6 +26,17 @@ public class PhysicsObject : MonoBehaviour
     }
 
 
+    public virtual Vector3 GetCenter()
+    {
+        return transform.position + transform.rotation * rb.centerOfMass;
+    }
+
+    public virtual Vector3 GetVelocity()
+    {
+        return rb.linearVelocity;
+    }
+
+
     public virtual void AddExplosionForce(float power, Vector3 origin)
     {
         Vector3 com = transform.position + transform.rotation * rb.centerOfMass;
@@ -37,6 +48,11 @@ public class PhysicsObject : MonoBehaviour
         float falloff = 1 / (dist * dist + 1);
         
         rb.linearVelocity += power * direction * falloff / rb.mass;
+    }
+
+    public virtual void AddAcceleration(Vector3 acceleration)
+    {
+        rb.AddForce(acceleration * rb.mass);
     }
 
     /// <summary>

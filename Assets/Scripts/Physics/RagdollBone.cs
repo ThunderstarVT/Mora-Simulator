@@ -20,5 +20,11 @@ public class RagdollBone : MonoBehaviour
     }
 
 
+    public void AddAcceleration(Vector3 acceleration)
+    {
+        rb.AddForce(acceleration * rb.mass);
+    }
+
+
     public event Action<Collision> OnCollisionEnterEvent;
 }
