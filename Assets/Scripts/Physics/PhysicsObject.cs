@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Singletons;
@@ -7,7 +8,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsObject : MonoBehaviour
 {
-    public static List<PhysicsObject> Instances { get; protected set; } = new();
+    public static List<PhysicsObject> Instances { get; } = new();
 
     [Header("Required Components (PhysicsObject)")]
     [SerializeField] protected Rigidbody rb;
@@ -48,6 +49,8 @@ public class PhysicsObject : MonoBehaviour
         float falloff = 1 / (dist * dist + 1);
         
         rb.linearVelocity += power * direction * falloff / rb.mass;
+        
+        OnExplosionEvent?.Invoke(power * falloff);
     }
 
     public virtual void AddAcceleration(Vector3 acceleration)
@@ -121,4 +124,17 @@ public class PhysicsObject : MonoBehaviour
     {
         return volume.size.x * volume.size.y * volume.size.z;
     }
+
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        OnCollisionEnterEvent?.Invoke(collision);
+    }
+
+
+    public event Action<Collision> OnCollisionEnterEvent;
+    
+    public event Action<float> OnExplosionEvent;
+
+    protected void OnExplosionEventInvoke(float power) => OnExplosionEvent?.Invoke(power);
 }

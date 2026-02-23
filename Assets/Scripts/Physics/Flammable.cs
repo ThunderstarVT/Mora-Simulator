@@ -7,11 +7,14 @@ using Random = UnityEngine.Random;
 
 public class Flammable : MonoBehaviour
 {
-    public static List<Flammable> Instances { get; private set; } = new();
+    public static List<Flammable> Instances { get; } = new();
 
     [SerializeField] private int burnTicks = 10;
     [SerializeField] private float spreadRange = 1f;
     [SerializeField] private List<Collider> colliders;
+    
+    [Space]
+    [SerializeField] private List<ParticleSystem> particles;
     
     private Coroutine burnCoroutine;
     
@@ -27,6 +30,15 @@ public class Flammable : MonoBehaviour
     private void Start()
     {
         Instances.Add(this);
+
+        OnBurnEnd += () =>
+        {
+            particles.ForEach(p =>
+            {
+                ParticleSystem.EmissionModule emission = p.emission;
+                emission.enabled = false;
+            });
+        };
     }
 
     private void OnDestroy()
@@ -39,6 +51,12 @@ public class Flammable : MonoBehaviour
     {
         if (burnCoroutine == null && burnTicks > 0)
         {
+            particles.ForEach(p =>
+            {
+                ParticleSystem.EmissionModule emission = p.emission;
+                emission.enabled = true;
+            });
+            
             burnCoroutine = StartCoroutine(BurnCoroutine());
         }
     }

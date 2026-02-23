@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Singletons;
@@ -13,6 +14,7 @@ public class Ragdoll : PhysicsObject
     
     [Header("Settings (Ragdoll)")]
     [SerializeField] private bool ragdoll;
+    public bool isRagdolling => ragdoll;
     
     [Space]
     [SerializeField] private Transform root;
@@ -52,15 +54,20 @@ public class Ragdoll : PhysicsObject
                 Vector3 com = bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass;
         
                 Vector3 toObject = com - origin;
-                float dist = toObject.magnitude;
+                float _dist = toObject.magnitude;
         
-                float falloff = 1 / (dist * dist + 1);
+                float falloff = 1 / (_dist * _dist + 1);
 
                 if (Mathf.Abs(power) * falloff > explosionThreshold) SetActive();
 
                 if (ragdoll) break;
             }
         }
+
+        float dist = (GetCenter() - origin).magnitude;
+        float comFalloff = 1 / (dist * dist + 1);
+        
+        OnExplosionEventInvoke(power * comFalloff);
 
         if (!ragdoll) return;
         {
@@ -69,10 +76,10 @@ public class Ragdoll : PhysicsObject
                 Vector3 com = bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass;
         
                 Vector3 toObject = com - origin;
-                float dist = toObject.magnitude;
+                float _dist = toObject.magnitude;
                 Vector3 direction = toObject.normalized;
         
-                float falloff = 1 / (dist * dist);
+                float falloff = 1 / (_dist * _dist);
         
                 bone.RB.linearVelocity += power * direction * falloff / bone.RB.mass;
             }
@@ -185,7 +192,7 @@ public class Ragdoll : PhysicsObject
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.impulse.magnitude);
 
@@ -193,6 +200,8 @@ public class Ragdoll : PhysicsObject
         {
             SetActive();
         }
+        
+        base.OnCollisionEnter(collision);
     }
 
 
