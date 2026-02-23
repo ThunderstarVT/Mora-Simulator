@@ -45,6 +45,7 @@ namespace Singletons
         [SerializeField, Range(0f, 1f)] private float voiceVolume = 0.5f;
         [Space]
         [SerializeField] private Options buoyancyAccuracy = Options.MID;
+        [SerializeField] private Options particleCount = Options.MID;
 
         
         public float MouseSense => Mathf.Pow(10f, Mathf.Lerp(-1f, 1f, mouseSense));
@@ -60,6 +61,15 @@ namespace Singletons
             Options.MID => 128,
             Options.HIGH => 256,
             _ => 0
+        };
+
+        public float ParticleRateModifier => particleCount switch
+        {
+            Options.POTATO => 0.0f,
+            Options.LOW => 0.5f,
+            Options.MID => 1.0f,
+            Options.HIGH => 2.0f,
+            _ => 0.0f
         };
     }
 }
