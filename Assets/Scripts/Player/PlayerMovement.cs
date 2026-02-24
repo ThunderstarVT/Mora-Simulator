@@ -85,7 +85,8 @@ public class PlayerMovement : MonoBehaviour
         
         if (ragdoll.isRagdolling) // ragdoll movement
         {
-            ragdoll.AddAcceleration(new Vector3(inputDirection.x, 0, inputDirection.y) * ragdollAcceleration);
+            ragdoll.AddAcceleration(Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0) 
+                                    * new Vector3(inputDirection.x, 0, inputDirection.y) * ragdollAcceleration);
         }
         else
         {
