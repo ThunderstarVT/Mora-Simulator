@@ -39,6 +39,8 @@ namespace Singletons
         }
         
         [SerializeField, Range(0f, 1f)] private float mouseSense = 0.5f;
+        [SerializeField] private bool mouseInvertX = false;
+        [SerializeField] private bool mouseInvertY = false;
         [Space]
         [SerializeField, Range(0f, 1f)] private float sfxVolume = 0.5f;
         [SerializeField, Range(0f, 1f)] private float musicVolume = 0.5f;
@@ -48,7 +50,8 @@ namespace Singletons
         [SerializeField] private Options particleCount = Options.MID;
 
         
-        public float MouseSense => Mathf.Pow(10f, Mathf.Lerp(-1f, 1f, mouseSense));
+        public Vector2 MouseSense => new Vector2(mouseInvertX ? -1 : 1, mouseInvertY ? -1 : 1) 
+                                     * Mathf.Pow(10f, Mathf.Lerp(-1f, 1f, mouseSense));
 
         public float SfxVolume => sfxVolume;
         public float MusicVolume => musicVolume;
