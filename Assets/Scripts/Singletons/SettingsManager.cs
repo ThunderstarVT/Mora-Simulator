@@ -38,12 +38,12 @@ namespace Singletons
             HIGH = 1
         }
         
-        [SerializeField, Range(0f, 1f)] private float mouseSenseX = 0.5f;
+        [SerializeField, Range(0f, 1f)] private float mouseSenseX = 0.6f;
         [SerializeField] private bool mouseInvertX = false; // horizontal
-        [SerializeField, Range(0f, 1f)] private float mouseSenseY = 0.5f;
-        [SerializeField] private bool mouseInvertY = false; // vertical
+        [SerializeField, Range(0f, 1f)] private float mouseSenseY = 0.6f;
+        [SerializeField] private bool mouseInvertY = true; // vertical
         [SerializeField, Range(0f, 1f)] private float mouseSenseZ = 0.5f;
-        [SerializeField] private bool mouseInvertZ = false; // scroll
+        [SerializeField] private bool mouseInvertZ = true; // scroll
         [Space]
         [SerializeField, Range(0f, 1f)] private float sfxVolume = 0.5f;
         [SerializeField, Range(0f, 1f)] private float musicVolume = 0.5f;
