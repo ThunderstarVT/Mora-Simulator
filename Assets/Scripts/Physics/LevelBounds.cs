@@ -26,7 +26,7 @@ public class LevelBounds : MonoBehaviour
             Vector3 position = physicsObject.GetCenter();
             Vector3 velocity = physicsObject.GetVelocity();
             
-            physicsObject.AddAcceleration(-(springConstant * (position - volume.ClosestPoint(position) + (position - volume.center).normalized)) -(dampingCoefficient * velocity));
+            physicsObject.AddAcceleration(-(springConstant * (position - volume.ClosestPoint(position) + (position - volume.ClosestPoint(position)).normalized)) -(dampingCoefficient * velocity));
         }
     }
 

@@ -21,8 +21,6 @@ public class PlayerInputManager : MonoBehaviour
         inputActions.Player.movement.canceled += e => OnMovement?.Invoke(e);
         
         inputActions.Player.sprint.started += e => OnSprint?.Invoke(e);
-        inputActions.Player.sprint.performed += e => OnSprint?.Invoke(e);
-        inputActions.Player.sprint.canceled += e => OnSprint?.Invoke(e);
         
         inputActions.Player.jump.started += e => OnJump?.Invoke(e);
         

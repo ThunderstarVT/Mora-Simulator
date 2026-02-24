@@ -23,6 +23,9 @@ public class Ragdoll : PhysicsObject
     [Space]
     [SerializeField, Min(0f)] private float impulseThreshold = 20f;
     [SerializeField, Min(0f)] private float explosionThreshold = 2.5f;
+    
+    [Space]
+    [SerializeField, Min(0f)] private float activationNoise = 0.05f;
 
     
     protected void Awake()
@@ -155,6 +158,8 @@ public class Ragdoll : PhysicsObject
         
         ragdoll = true;
         
+        Vector3 velocity = rb.linearVelocity;
+        
         rb.isKinematic = true;
         rb.useGravity = false;
 
@@ -162,6 +167,9 @@ public class Ragdoll : PhysicsObject
         {
             bone.RB.isKinematic = false;
             bone.RB.useGravity = true;
+            
+            bone.RB.linearVelocity = velocity + new Vector3(
+                Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * activationNoise;
         }
             
         anim.enabled = false;
@@ -183,11 +191,8 @@ public class Ragdoll : PhysicsObject
         }
             
         anim.enabled = true;
-            
-        Vector3 sum = bones.Aggregate(Vector3.zero, (current, bone) => current + bone.RB.position);
-        sum /= bones.Count;
 
-        transform.position = sum;
+        transform.position = GetCenter();
         root.position = Vector3.zero;
     }
 
