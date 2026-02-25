@@ -27,8 +27,6 @@ public class PlayerInputManager : MonoBehaviour
         inputActions.Player.ragdoll.started += e => OnRagdoll?.Invoke(e);
         
         inputActions.Player.kick.started += e => OnKick?.Invoke(e);
-        inputActions.Player.kick.performed += e => OnKick?.Invoke(e);
-        inputActions.Player.kick.canceled += e => OnKick?.Invoke(e);
         
         inputActions.Player.eat.started += e => OnEat?.Invoke(e);
         

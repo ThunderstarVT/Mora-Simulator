@@ -148,12 +148,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""breatheFire"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""941a62a6-1654-4cd4-b9fb-1d05bc6e12d6"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""makeSound"",

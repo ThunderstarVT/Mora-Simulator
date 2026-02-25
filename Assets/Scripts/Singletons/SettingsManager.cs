@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Singletons
 {
     public class SettingsManager : MonoBehaviour
     {
         private static SettingsManager instance;
+
+        public static event Action OnApply;
+        
 
         public static SettingsManager Instance
         {
@@ -29,6 +33,76 @@ namespace Singletons
             }
         }
 
+        private void Start()
+        {
+            //TODO: load from player prefs
+            
+            Apply();
+        }
+
+
+        public void Apply()
+        {
+            mouseSenseX_old = mouseSenseX;
+            mouseInvertX_old = mouseInvertX;
+            mouseSenseY_old = mouseSenseY;
+            mouseInvertY_old = mouseInvertY;
+            mouseSenseZ_old = mouseSenseZ;
+            mouseInvertZ_old = mouseInvertZ;
+
+            sfxVolume_old = sfxVolume;
+            musicVolume_old = musicVolume;
+            voiceVolume_old = voiceVolume;
+
+            buoyancyAccuracy_old = buoyancyAccuracy;
+            particleCount_old = particleCount;
+            
+            
+            OnApply?.Invoke();
+        }
+
+        public void Revert()
+        {
+            mouseSenseX = mouseSenseX_old;
+            mouseInvertX = mouseInvertX_old;
+            mouseSenseY = mouseSenseY_old;
+            mouseInvertY = mouseInvertY_old;
+            mouseSenseZ = mouseSenseZ_old;
+            mouseInvertZ = mouseInvertZ_old;
+
+            sfxVolume = sfxVolume_old;
+            musicVolume = musicVolume_old;
+            voiceVolume = voiceVolume_old;
+
+            buoyancyAccuracy = buoyancyAccuracy_old;
+            particleCount = particleCount_old;
+        }
+
+        
+        [SerializeField] private bool apply;
+        [SerializeField] private bool revert;
+        private void OnValidate()
+        {
+            if (revert) Revert();
+            revert = false;
+            
+            if (apply) Apply();
+            apply = false;
+        }
+        
+        
+        public bool UnsavedChanges => mouseSenseX != mouseSenseX_old || 
+                                      mouseInvertX != mouseInvertX_old ||
+                                      mouseSenseY != mouseSenseY_old || 
+                                      mouseInvertY != mouseInvertY_old || 
+                                      mouseSenseZ != mouseSenseZ_old || 
+                                      mouseInvertZ != mouseInvertZ_old ||
+                                      sfxVolume != sfxVolume_old || 
+                                      musicVolume != musicVolume_old || 
+                                      voiceVolume != voiceVolume_old ||
+                                      buoyancyAccuracy != buoyancyAccuracy_old || 
+                                      particleCount != particleCount_old;
+
 
         private enum Options
         {
@@ -51,6 +125,21 @@ namespace Singletons
         [Space]
         [SerializeField] private Options buoyancyAccuracy = Options.MID;
         [SerializeField] private Options particleCount = Options.MID;
+
+        
+        private float mouseSenseX_old;
+        private bool mouseInvertX_old;
+        private float mouseSenseY_old;
+        private bool mouseInvertY_old;
+        private float mouseSenseZ_old;
+        private bool mouseInvertZ_old;
+
+        private float sfxVolume_old;
+        private float musicVolume_old;
+        private float voiceVolume_old;
+
+        private Options buoyancyAccuracy_old;
+        private Options particleCount_old;
 
         
         public Vector3 MouseSense => new(
