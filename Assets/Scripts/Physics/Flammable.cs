@@ -63,7 +63,7 @@ public class Flammable : MonoBehaviour
 
     private void TrySpread()
     {
-        foreach (var instance in Instances.Where(f => f != this && f.CanBurn && !f.IsBurning && 
+        foreach (Flammable instance in Instances.Where(f => f != this && f.CanBurn && !f.IsBurning && 
                 f.Colliders.Any(c1 => Colliders.Any(c2 => ColliderDistance(c1, c2) < spreadRange))))
         {
             instance.StartBurn();
