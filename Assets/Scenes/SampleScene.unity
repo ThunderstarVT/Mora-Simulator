@@ -1690,11 +1690,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   apply: 0
   revert: 0
-  mouseSenseX: 0.6
+  mouseSenseX: 0.8
   mouseInvertX: 0
-  mouseSenseY: 0.6
+  mouseSenseY: 0.8
   mouseInvertY: 1
-  mouseSenseZ: 0.5
+  mouseSenseZ: 0.8
   mouseInvertZ: 1
   sfxVolume: 0.5
   musicVolume: 0.5
