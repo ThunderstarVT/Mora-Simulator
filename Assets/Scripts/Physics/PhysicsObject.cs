@@ -15,6 +15,7 @@ public class PhysicsObject : MonoBehaviour
     
     [Header("Settings (PhysicsObject)")]
     [SerializeField] protected List<Collider> colliders;
+    public List<Collider> Colliders => colliders;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class PhysicsObject : MonoBehaviour
 
     public virtual Vector3 GetCenter()
     {
-        return transform.position + transform.rotation * rb.centerOfMass;
+        return rb.worldCenterOfMass;
     }
 
     public virtual Vector3 GetVelocity()
@@ -40,7 +41,7 @@ public class PhysicsObject : MonoBehaviour
 
     public virtual void AddExplosionForce(float power, Vector3 origin)
     {
-        Vector3 com = transform.position + transform.rotation * rb.centerOfMass;
+        Vector3 com = rb.worldCenterOfMass;
         
         Vector3 toObject = com - origin;
         float dist = toObject.magnitude;
@@ -56,6 +57,14 @@ public class PhysicsObject : MonoBehaviour
     public virtual void AddAcceleration(Vector3 acceleration)
     {
         rb.AddForce(acceleration * rb.mass);
+    }
+    
+    public virtual void AddImpulseAtPoint(Vector3 impulse, Vector3 point)
+    {
+        Vector3 closestPoint = colliders.Aggregate(Vector3.positiveInfinity, (current, c) => 
+            Vector3.Distance(point, c.ClosestPoint(point)) < Vector3.Distance(point, current) ? c.ClosestPoint(point) : current);
+        
+        rb.AddForceAtPosition(impulse, closestPoint, ForceMode.Impulse);
     }
 
     /// <summary>

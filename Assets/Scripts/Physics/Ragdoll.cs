@@ -19,6 +19,7 @@ public class Ragdoll : PhysicsObject
     [Space]
     [SerializeField] private Transform root;
     [SerializeField] private List<RagdollBone> bones;
+    public List<RagdollBone> Bones => bones;
     
     [Space]
     [SerializeField, Min(0f)] private float impulseThreshold = 20f;
@@ -39,7 +40,7 @@ public class Ragdoll : PhysicsObject
 
     public override Vector3 GetCenter()
     {
-        return bones.Aggregate(Vector3.zero, (sum, bone) => sum + bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass) / bones.Count;
+        return bones.Aggregate(Vector3.zero, (sum, bone) => sum + bone.RB.worldCenterOfMass) / bones.Count;
     }
 
     public override Vector3 GetVelocity()
@@ -54,7 +55,7 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                Vector3 com = bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass;
+                Vector3 com = bone.RB.worldCenterOfMass;
         
                 Vector3 toObject = com - origin;
                 float _dist = toObject.magnitude;
@@ -76,7 +77,7 @@ public class Ragdoll : PhysicsObject
         {
             foreach (RagdollBone bone in bones)
             {
-                Vector3 com = bone.transform.position + bone.transform.rotation * bone.RB.centerOfMass;
+                Vector3 com = bone.RB.worldCenterOfMass;
         
                 Vector3 toObject = com - origin;
                 float _dist = toObject.magnitude;
@@ -95,6 +96,22 @@ public class Ragdoll : PhysicsObject
         {
             bone.AddAcceleration(acceleration);
         }
+    }
+
+    public override void AddImpulseAtPoint(Vector3 impulse, Vector3 point)
+    {
+        SetActive();
+        
+        float minDist = bones.Min(b => Vector3.Distance(point, b.Collider.ClosestPoint(point)));
+
+        List<RagdollBone> closest = bones
+            .Where(b => Mathf.Approximately(Vector3.Distance(point, b.Collider.ClosestPoint(point)), minDist))
+            .ToList();
+        
+        float totalMassOfClosest = closest.Sum(b => b.RB.mass);
+        
+        closest.ForEach(b => 
+            b.RB.AddForceAtPosition(impulse * b.RB.mass / totalMassOfClosest, b.Collider.ClosestPoint(point), ForceMode.Impulse));
     }
 
     public override void AddBuoyantForceAndDrag(Bounds volume, float density, Vector3 velocity)

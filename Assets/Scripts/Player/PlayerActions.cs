@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [RequireComponent(typeof(PlayerInputManager))]
 public class PlayerActions : MonoBehaviour
 {
@@ -13,6 +17,10 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private Ragdoll ragdoll;
 
     [Header("Kick Settings")] 
+    [SerializeField] private Transform kickOrigin;
+    [SerializeField, Min(0f)] private float kickRadius = 1.0f;
+    [SerializeField, Min(0f)] private float kickImpulse = 1000f;
+    [SerializeField] private float kickUpwardsModifier = 0.2f;
     
     [Header("Eat Settings")] 
     
@@ -80,28 +88,66 @@ public class PlayerActions : MonoBehaviour
             Gizmos.DrawLine(start + right, end + right);
             Gizmos.DrawLine(start - right, end - right);
         }
-    }
 
-
-    private void OnKick(InputAction.CallbackContext obj)
-    {
-        if (!ragdoll.isRagdolling)
+        if (kickOrigin)
         {
+            Gizmos.color = Color.cyan;
             
+            Gizmos.DrawWireSphere(kickOrigin.position, kickRadius);
+            
+#if UNITY_EDITOR
+            Handles.color = Color.cyan;
+            Handles.ArrowHandleCap(0, kickOrigin.position, 
+                Quaternion.LookRotation(kickOrigin.forward + Vector3.up * kickUpwardsModifier), 
+                Mathf.Log10(kickImpulse + 1f), EventType.Repaint);
+#endif
         }
     }
 
-    private void OnEat(InputAction.CallbackContext obj)
+
+    private void OnKick(InputAction.CallbackContext context)
     {
         if (!ragdoll.isRagdolling)
         {
+            List<PhysicsObject> physicsObjectsInKick = PhysicsObject.Instances.Where(obj =>
+            {
+                if (obj == ragdoll) return false;
+
+                try
+                {
+                    Ragdoll rd = (Ragdoll) obj;
+
+                    return rd.Bones.Any(b =>
+                        Vector3.Distance(kickOrigin.position, b.Collider.ClosestPoint(kickOrigin.position)) <
+                        kickRadius);
+                }
+                catch (Exception e)
+                {
+                    return obj.Colliders.Any(c =>
+                        Vector3.Distance(kickOrigin.position, c.ClosestPoint(kickOrigin.position)) < kickRadius);
+                }
+            }).ToList();
+
+            if (physicsObjectsInKick.Count < 1) return;
             
+            physicsObjectsInKick.OrderBy(obj => Vector3.Distance(kickOrigin.position, obj.GetCenter()))
+                .First().AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse, 
+                    kickOrigin.position);
         }
     }
 
-    private void OnBreatheFire(InputAction.CallbackContext obj)
+    private void OnEat(InputAction.CallbackContext context)
     {
-        breathingFire = obj.ReadValue<float>() > 0.5f;
+        if (!ragdoll.isRagdolling)
+        {
+            //TODO: eat edible object in sphere that is closest to center
+            // will be added when edible object gets added
+        }
+    }
+
+    private void OnBreatheFire(InputAction.CallbackContext context)
+    {
+        breathingFire = context.ReadValue<float>() > 0.5f;
 
         if (fireParticles)
         {
@@ -110,7 +156,7 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    private void OnScream(InputAction.CallbackContext obj)
+    private void OnScream(InputAction.CallbackContext context)
     {
         if (screamAudioClips.Count < 1) return;
         
