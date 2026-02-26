@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
     
-    [SerializeField, Min(0f)] private float groundCheckRadius = 0.5f;
-    [SerializeField] private float groundCheckOffset = 0.0f;
+    [SerializeField, Min(0f)] private float groundCheckRadius = 0.25f;
+    [SerializeField] private float groundCheckOffset = 0.2f;
     
     private Vector2 inputDirection;
     

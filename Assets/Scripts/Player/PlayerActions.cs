@@ -18,7 +18,7 @@ public class PlayerActions : MonoBehaviour
 
     [Header("Kick Settings")] 
     [SerializeField] private Transform kickOrigin;
-    [SerializeField, Min(0f)] private float kickRadius = 1.0f;
+    [SerializeField, Min(0f)] private float kickRadius = 0.8f;
     [SerializeField, Min(0f)] private float kickImpulse = 1000f;
     [SerializeField] private float kickUpwardsModifier = 0.2f;
     
@@ -27,7 +27,7 @@ public class PlayerActions : MonoBehaviour
     [Header("Fire Breath Settings")] 
     [SerializeField] private Transform fireOrigin;
     [SerializeField, Min(0f)] private float fireDistance = 1.5f;
-    [SerializeField, Min(0f)] private float fireRadius = 0.5f;
+    [SerializeField, Min(0f)] private float fireRadius = 0.4f;
     [SerializeField] private ParticleSystem fireParticles;
     
     private bool breathingFire;
