@@ -31,6 +31,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private ParticleSystem fireParticles;
     
     private bool breathingFire;
+    public bool BreathingFire => breathingFire;
     
     [Header("Scream Settings")]
     [SerializeField] private AudioSource screamAudioSource;
@@ -109,6 +110,8 @@ public class PlayerActions : MonoBehaviour
     {
         if (!ragdoll.isRagdolling)
         {
+            OnKickEvent?.Invoke();
+            
             List<PhysicsObject> physicsObjectsInKick = PhysicsObject.Instances.Where(obj =>
             {
                 if (obj == ragdoll) return false;
@@ -140,6 +143,8 @@ public class PlayerActions : MonoBehaviour
     {
         if (!ragdoll.isRagdolling)
         {
+            OnEatEvent?.Invoke();
+            
             //TODO: eat edible object in sphere that is closest to center
             // will be added when edible object gets added
         }
@@ -158,9 +163,17 @@ public class PlayerActions : MonoBehaviour
 
     private void OnScream(InputAction.CallbackContext context)
     {
+        OnScreamEvent?.Invoke();
+        
         if (screamAudioClips.Count < 1) return;
         
         AudioClip clip = screamAudioClips.OrderBy(c => Random.value).First();
         screamAudioSource.PlayOneShot(clip);
     }
+    
+    
+    // events for the animator
+    public event Action OnKickEvent;
+    public event Action OnEatEvent;
+    public event Action OnScreamEvent;
 }

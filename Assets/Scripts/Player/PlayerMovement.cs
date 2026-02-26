@@ -145,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded && !ragdoll.isRagdolling)
         {
+            OnJumpEvent?.Invoke();
             rb.linearVelocity += Vector3.up * jumpVelocity;
         }
     }
@@ -157,4 +158,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else ragdoll.SetActive();
     }
+
+
+    // events for the animator
+    public event Action OnJumpEvent;
 }
