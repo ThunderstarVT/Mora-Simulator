@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructibleObject: {fileID: 447006537}
   explosionOrigin: {fileID: 447006544}
-  explosionPower: 1500
+  explosionPower: 500
   particlePrefab: {fileID: 0}
 --- !u!114 &447006537
 MonoBehaviour:
