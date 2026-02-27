@@ -128,7 +128,7 @@ namespace Singletons
                                       particleCount != particleCount_old;
 
 
-        private enum Options
+        public enum Options
         {
             POTATO = -4,
             LOW = -1,
@@ -136,19 +136,20 @@ namespace Singletons
             HIGH = 1
         }
         
-        [SerializeField, Range(0f, 1f)] private float mouseSenseX = 0.6f;
-        [SerializeField] private bool mouseInvertX = false; // horizontal
-        [SerializeField, Range(0f, 1f)] private float mouseSenseY = 0.6f;
-        [SerializeField] private bool mouseInvertY = true; // vertical
-        [SerializeField, Range(0f, 1f)] private float mouseSenseZ = 0.5f;
-        [SerializeField] private bool mouseInvertZ = true; // scroll
         [Space]
-        [SerializeField, Range(0f, 1f)] private float sfxVolume = 0.5f;
-        [SerializeField, Range(0f, 1f)] private float musicVolume = 0.5f;
-        [SerializeField, Range(0f, 1f)] private float voiceVolume = 0.5f;
+        [Range(0f, 1f)] public float mouseSenseX = 0.6f;
+        public bool mouseInvertX = false; // horizontal
+        [Range(0f, 1f)] public float mouseSenseY = 0.6f;
+        public bool mouseInvertY = true; // vertical
+        [Range(0f, 1f)] public float mouseSenseZ = 0.5f;
+        public bool mouseInvertZ = true; // scroll
         [Space]
-        [SerializeField] private Options buoyancyAccuracy = Options.MID;
-        [SerializeField] private Options particleCount = Options.MID;
+        [Range(0f, 1f)] public float sfxVolume = 0.5f;
+        [Range(0f, 1f)] public float musicVolume = 0.5f;
+        [Range(0f, 1f)] public float voiceVolume = 0.5f;
+        [Space]
+        public Options buoyancyAccuracy = Options.MID;
+        public Options particleCount = Options.MID;
 
         
         private float mouseSenseX_old;
