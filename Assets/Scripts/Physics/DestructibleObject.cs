@@ -16,7 +16,17 @@ public class DestructibleObject : MonoBehaviour
     {
         physicsObject.OnCollisionEnterEvent += collision =>
         {
-            if (collision.impulse.magnitude > impulseThreshold) OnBreakEvent?.Invoke();
+            float reducedMass = physicsObject.rb.mass;
+
+            if (collision.rigidbody)
+            {
+                reducedMass = (physicsObject.rb.mass * collision.rigidbody.mass) /
+                              (physicsObject.rb.mass + collision.rigidbody.mass);
+            }
+            
+            float impulse = reducedMass * Vector3.Dot(collision.relativeVelocity, collision.contacts[0].normal);
+            
+            if (impulse > impulseThreshold) OnBreakEvent?.Invoke();
         };
 
         physicsObject.OnExplosionEvent += power =>

@@ -35,6 +35,8 @@ public class Ragdoll : PhysicsObject
         {
             bone.OnCollisionEnterEvent += OnCollisionEnter;
         }
+        
+        rb.mass = bones.Sum(b => b.RB.mass);
     }
 
 
@@ -51,27 +53,12 @@ public class Ragdoll : PhysicsObject
 
     public override void AddExplosionForce(float power, Vector3 origin)
     {
-        if (!ragdoll)
-        {
-            foreach (RagdollBone bone in bones)
-            {
-                Vector3 com = bone.RB.worldCenterOfMass;
-        
-                Vector3 toObject = com - origin;
-                float _dist = toObject.magnitude;
-        
-                float falloff = 1 / (_dist * _dist + 1);
-
-                if (Mathf.Abs(power) * falloff > explosionThreshold) SetActive();
-
-                if (ragdoll) break;
-            }
-        }
-
         float dist = (GetCenter() - origin).magnitude;
         float comFalloff = 1 / (dist * dist + 1);
         
         OnExplosionEventInvoke(power * comFalloff);
+        
+        if (!ragdoll && power * comFalloff > explosionThreshold) SetActive();
 
         if (!ragdoll) return;
         {
@@ -179,11 +166,15 @@ public class Ragdoll : PhysicsObject
         
         rb.isKinematic = true;
         rb.useGravity = false;
+        
+        colliders.ForEach(c => c.enabled = false);
 
         foreach (RagdollBone bone in bones)
         {
             bone.RB.isKinematic = false;
             bone.RB.useGravity = true;
+            
+            bone.Collider.enabled = true;
             
             bone.RB.linearVelocity = velocity + new Vector3(
                 Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * activationNoise;
@@ -200,11 +191,15 @@ public class Ragdoll : PhysicsObject
         
         rb.isKinematic = false;
         rb.useGravity = true;
+        
+        colliders.ForEach(c => c.enabled = true);
 
         foreach (RagdollBone bone in bones)
         {
             bone.RB.isKinematic = true;
             bone.RB.useGravity = false;
+            
+            bone.Collider.enabled = false;
         }
             
         anim.enabled = true;
@@ -216,9 +211,19 @@ public class Ragdoll : PhysicsObject
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(collision.impulse.magnitude);
+        float reducedMass = rb.mass;
 
-        if (collision.impulse.magnitude > impulseThreshold)
+        if (collision.rigidbody)
+        {
+            reducedMass = (rb.mass * collision.rigidbody.mass) /
+                          (rb.mass + collision.rigidbody.mass);
+        }
+            
+        float impulse = reducedMass * Vector3.Dot(collision.relativeVelocity, collision.contacts[0].normal);
+        
+        //Debug.Log(impulse);
+
+        if (impulse > impulseThreshold)
         {
             SetActive();
         }

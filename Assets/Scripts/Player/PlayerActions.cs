@@ -119,12 +119,22 @@ public class PlayerActions : MonoBehaviour
                 try
                 {
                     Ragdoll rd = (Ragdoll) obj;
-
+                    
                     return rd.Bones.Any(b =>
-                        Vector3.Distance(kickOrigin.position, b.Collider.ClosestPoint(kickOrigin.position)) <
-                        kickRadius);
+                    {
+                        bool wasEnabled = b.Collider.enabled;
+
+                        b.Collider.enabled = true;
+                        
+                        float dist = Vector3.Distance(kickOrigin.position,
+                            b.Collider.ClosestPoint(kickOrigin.position));
+                        
+                        b.Collider.enabled = wasEnabled;
+                        
+                        return dist < kickRadius;
+                    });
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return obj.Colliders.Any(c =>
                         Vector3.Distance(kickOrigin.position, c.ClosestPoint(kickOrigin.position)) < kickRadius);

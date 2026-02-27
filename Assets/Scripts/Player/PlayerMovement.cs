@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField, Min(0f)] private float ragdollAcceleration = 1.0f;
 
-    [SerializeField, Min(0f)] private float jumpVelocity = 10f;
+    [SerializeField, Min(0f)] private float jumpVelocity = 6.0f;
 
     [SerializeField] private LayerMask groundLayer;
     
@@ -98,7 +98,9 @@ public class PlayerMovement : MonoBehaviour
                 
                 Vector3 targetVelocity = Vector3.ProjectOnPlane(flatTargetVelocity, GroundNormal);
                 
-                rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, groundedVelocitySmoothing * Time.deltaTime);
+                Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, groundedVelocitySmoothing * Time.deltaTime);
+                
+                rb.linearVelocity = new Vector3(newLinearVelocity.x, rb.linearVelocity.y, newLinearVelocity.z);
             }
             else // air movement
             {
@@ -106,7 +108,9 @@ public class PlayerMovement : MonoBehaviour
                                          * new Vector3(inputDirection.x, 0, inputDirection.y) 
                                          * walkSpeed;
                 
-                rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, airborneVelocitySmoothing * Time.deltaTime);
+                Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, airborneVelocitySmoothing * Time.deltaTime);
+                
+                rb.linearVelocity = new Vector3(newLinearVelocity.x, rb.linearVelocity.y, newLinearVelocity.z);
             }
             
             // turn the player

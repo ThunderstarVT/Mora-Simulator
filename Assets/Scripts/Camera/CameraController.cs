@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
         orbitalDistanceSmoothed = orbitalDistance;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch (cameraMode)
         {

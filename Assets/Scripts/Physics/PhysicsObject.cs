@@ -11,7 +11,7 @@ public class PhysicsObject : MonoBehaviour
     public static List<PhysicsObject> Instances { get; } = new();
 
     [Header("Required Components (PhysicsObject)")]
-    [SerializeField] protected Rigidbody rb;
+    public Rigidbody rb;
     
     [Header("Settings (PhysicsObject)")]
     [SerializeField] protected List<Collider> colliders;
