@@ -142,10 +142,13 @@ public class PlayerActions : MonoBehaviour
             }).ToList();
 
             if (physicsObjectsInKick.Count < 1) return;
+
+            PhysicsObject first = physicsObjectsInKick
+                .OrderBy(obj => Vector3.Distance(kickOrigin.position, obj.GetCenter())).First();
             
-            physicsObjectsInKick.OrderBy(obj => Vector3.Distance(kickOrigin.position, obj.GetCenter()))
-                .First().AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse, 
-                    kickOrigin.position);
+            first.OnKickedEventInvoke(kickImpulse);
+            first.AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse, 
+                kickOrigin.position);
         }
     }
 

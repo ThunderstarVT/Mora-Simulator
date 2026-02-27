@@ -65,14 +65,14 @@ public class Ragdoll : PhysicsObject
             foreach (RagdollBone bone in bones)
             {
                 Vector3 com = bone.RB.worldCenterOfMass;
-        
+
                 Vector3 toObject = com - origin;
                 float _dist = toObject.magnitude;
                 Vector3 direction = toObject.normalized;
-        
+
                 float falloff = 1 / (_dist * _dist);
-        
-                bone.RB.linearVelocity += power * direction * falloff / bone.RB.mass;
+
+                bone.RB.linearVelocity += power * direction * falloff / rb.mass;
             }
         }
     }

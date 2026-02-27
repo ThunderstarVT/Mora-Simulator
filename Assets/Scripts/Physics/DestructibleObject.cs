@@ -33,5 +33,10 @@ public class DestructibleObject : MonoBehaviour
         {
             if (power > explosionThreshold) OnBreakEvent?.Invoke();
         };
+
+        physicsObject.OnKickedEvent += impulse =>
+        {
+            if (impulse > impulseThreshold) OnBreakEvent?.Invoke();
+        };
     }
 }

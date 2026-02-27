@@ -64,6 +64,8 @@ public class PhysicsObject : MonoBehaviour
         Vector3 closestPoint = colliders.Aggregate(Vector3.positiveInfinity, (current, c) => 
             Vector3.Distance(point, c.ClosestPoint(point)) < Vector3.Distance(point, current) ? c.ClosestPoint(point) : current);
         
+        
+        
         rb.AddForceAtPosition(impulse, closestPoint, ForceMode.Impulse);
     }
 
@@ -142,8 +144,10 @@ public class PhysicsObject : MonoBehaviour
 
 
     public event Action<Collision> OnCollisionEnterEvent;
+
+    public event Action<float> OnKickedEvent;
+    public void OnKickedEventInvoke(float impulse) => OnKickedEvent?.Invoke(impulse);
     
     public event Action<float> OnExplosionEvent;
-
     protected void OnExplosionEventInvoke(float power) => OnExplosionEvent?.Invoke(power);
 }

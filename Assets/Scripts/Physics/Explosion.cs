@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] private float power = 5000f;
+    [SerializeField] private float power = 0.0f;
 
     private void Start()
     {
@@ -12,5 +12,10 @@ public class Explosion : MonoBehaviour
         }
         
         Destroy(gameObject);
+    }
+
+    public void SetPower(float power)
+    {
+        this.power = power;
     }
 }
