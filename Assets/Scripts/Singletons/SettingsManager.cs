@@ -38,6 +38,11 @@ namespace Singletons
             //TODO: load from player prefs
             
             Apply();
+
+            OnApply += () =>
+            {
+                //TODO: save to player prefs on apply
+            };
         }
 
 
@@ -76,6 +81,25 @@ namespace Singletons
 
             buoyancyAccuracy = buoyancyAccuracy_old;
             particleCount = particleCount_old;
+        }
+
+        public void FactoryReset()
+        {
+            mouseSenseX = mouseSenseX_old = 0.6f;
+            mouseInvertX = mouseInvertX_old = false;
+            mouseSenseY = mouseSenseY_old = 0.6f;
+            mouseInvertY = mouseInvertY_old = true;
+            mouseSenseZ = mouseSenseZ_old = 0.5f;
+            mouseInvertZ = mouseInvertZ_old = true;
+
+            sfxVolume = sfxVolume_old = 0.5f;
+            musicVolume = musicVolume_old = 0.5f;
+            voiceVolume = voiceVolume_old = 0.5f;
+
+            buoyancyAccuracy = buoyancyAccuracy_old = Options.MID;
+            particleCount = particleCount_old = Options.MID;
+            
+            OnApply?.Invoke();
         }
 
         
