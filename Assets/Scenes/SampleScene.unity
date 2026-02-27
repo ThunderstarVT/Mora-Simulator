@@ -1423,6 +1423,7 @@ GameObject:
   - component: {fileID: 447006539}
   - component: {fileID: 447006538}
   - component: {fileID: 447006537}
+  - component: {fileID: 447006545}
   - component: {fileID: 447006536}
   m_Layer: 0
   m_Name: Explosive Gas Canister
@@ -1444,6 +1445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructibleObject: {fileID: 447006537}
+  flammable: {fileID: 447006545}
   explosionOrigin: {fileID: 447006544}
   explosionPower: 500
   particlePrefab: {fileID: 0}
@@ -1617,6 +1619,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &447006545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447006535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d433c02f443f460f8eb67392e7b39978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnTicks: 10
+  spreadRange: 1
+  colliders:
+  - {fileID: 447006541}
+  - {fileID: 447006540}
+  particles: []
 --- !u!1 &624195939
 GameObject:
   m_ObjectHideFlags: 0
