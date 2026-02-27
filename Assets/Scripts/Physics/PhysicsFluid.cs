@@ -1,11 +1,26 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PhysicsFluid : MonoBehaviour
 {
+    public static List<PhysicsFluid> Instances { get; } = new();
+    
     [SerializeField] private Bounds volume;
+    public Bounds Volume => volume;
+    
     [SerializeField] private float density;
     [SerializeField] private Vector3 velocity;
 
+    private void Start()
+    {
+        Instances.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        Instances.Remove(this);
+    }
+    
     private void FixedUpdate()
     {
         foreach (PhysicsObject physicsObject in PhysicsObject.Instances)

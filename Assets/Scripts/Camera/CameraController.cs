@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
         orbitalDistanceSmoothed = orbitalDistance;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         switch (cameraMode)
         {
@@ -86,7 +86,7 @@ public class CameraController : MonoBehaviour
                 }
 
                 if (Physics.CheckSphere(orbitalTarget.position - transform.forward * orbitalDistance, 
-                        orbitalCollisionRadius * 0.9f, orbitalCollisionLayerMask))
+                        orbitalCollisionRadius * 0.99f, orbitalCollisionLayerMask))
                 {
                     if (Physics.SphereCast(orbitalTarget.position, orbitalCollisionRadius, 
                             targetPosition - orbitalTarget.position, out hit, orbitalTargetDistance, 

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField, Min(0f)] private float ragdollAcceleration = 1.0f;
 
-    [SerializeField, Min(0f)] private float jumpVelocity = 6.0f;
+    [SerializeField, Min(0f)] private float jumpVelocity = 8.0f;
 
     [SerializeField] private LayerMask groundLayer;
     
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         get
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 100f, groundLayer))
+            if (Physics.Raycast(transform.position + Vector3.up * groundCheckOffset, Vector3.down, out RaycastHit hit, 100f, groundLayer))
             {
                 return hit.normal;
             }
@@ -100,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 
                 Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, groundedVelocitySmoothing * Time.deltaTime);
                 
-                rb.linearVelocity = new Vector3(newLinearVelocity.x, rb.linearVelocity.y, newLinearVelocity.z);
+                rb.linearVelocity = newLinearVelocity;
             }
             else // air movement
             {
@@ -151,6 +152,15 @@ public class PlayerMovement : MonoBehaviour
         {
             OnJumpEvent?.Invoke();
             rb.linearVelocity += Vector3.up * jumpVelocity;
+        }
+        else 
+        {
+            Vector3 ragdollCenter = ragdoll.GetCenter();
+            
+            if (PhysicsFluid.Instances.Any(fluid => fluid.Volume.Contains(ragdollCenter)))
+            {
+                ragdoll.Bones.ForEach(bone => bone.RB.linearVelocity += Vector3.up * jumpVelocity);
+            }
         }
     }
     

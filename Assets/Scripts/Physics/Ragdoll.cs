@@ -61,19 +61,18 @@ public class Ragdoll : PhysicsObject
         if (!ragdoll && power * comFalloff > explosionThreshold) SetActive();
 
         if (!ragdoll) return;
+        
+        foreach (RagdollBone bone in bones)
         {
-            foreach (RagdollBone bone in bones)
-            {
-                Vector3 com = bone.RB.worldCenterOfMass;
+            Vector3 com = bone.RB.worldCenterOfMass;
 
-                Vector3 toObject = com - origin;
-                float _dist = toObject.magnitude;
-                Vector3 direction = toObject.normalized;
+            Vector3 toObject = com - origin;
+            float _dist = toObject.magnitude;
+            Vector3 direction = toObject.normalized;
 
-                float falloff = 1 / (_dist * _dist);
+            float falloff = 1 / (_dist * _dist);
 
-                bone.RB.linearVelocity += power * direction * falloff / rb.mass;
-            }
+            bone.RB.linearVelocity += power * direction * falloff / rb.mass;
         }
     }
 
