@@ -115,17 +115,11 @@ namespace Singletons
         }
         
         
-        public bool UnsavedChanges => mouseSenseX != mouseSenseX_old || 
-                                      mouseInvertX != mouseInvertX_old ||
-                                      mouseSenseY != mouseSenseY_old || 
-                                      mouseInvertY != mouseInvertY_old || 
-                                      mouseSenseZ != mouseSenseZ_old || 
-                                      mouseInvertZ != mouseInvertZ_old ||
-                                      sfxVolume != sfxVolume_old || 
-                                      musicVolume != musicVolume_old || 
-                                      voiceVolume != voiceVolume_old ||
-                                      buoyancyAccuracy != buoyancyAccuracy_old || 
-                                      particleCount != particleCount_old;
+        public bool UnsavedChanges => MouseSenseXChanged || MouseInvertXChanged || 
+                                      MouseSenseYChanged || MouseInvertYChanged || 
+                                      MouseSenseZChanged || MouseInvertZChanged ||
+                                      SfxVolumeChanged || MusicVolumeChanged || VoiceVolumeChanged ||
+                                      BuoyancyAccuracyChanged || ParticleCountChanged;
 
 
         public enum Options
@@ -165,6 +159,21 @@ namespace Singletons
 
         private Options buoyancyAccuracy_old;
         private Options particleCount_old;
+        
+        
+        public bool MouseSenseXChanged => mouseSenseX != mouseSenseX_old;
+        public bool MouseInvertXChanged => mouseInvertX != mouseInvertX_old;
+        public bool MouseSenseYChanged => mouseSenseY != mouseSenseY_old;
+        public bool MouseInvertYChanged => mouseInvertY != mouseInvertY_old;
+        public bool MouseSenseZChanged => mouseSenseZ != mouseSenseZ_old;
+        public bool MouseInvertZChanged => mouseInvertZ != mouseInvertZ_old;
+        
+        public bool SfxVolumeChanged => sfxVolume != sfxVolume_old;
+        public bool MusicVolumeChanged => musicVolume != musicVolume_old;
+        public bool VoiceVolumeChanged => voiceVolume != voiceVolume_old;
+        
+        public bool BuoyancyAccuracyChanged => buoyancyAccuracy != buoyancyAccuracy_old;
+        public bool ParticleCountChanged => particleCount != particleCount_old;
 
         
         public Vector3 MouseSense => new(
