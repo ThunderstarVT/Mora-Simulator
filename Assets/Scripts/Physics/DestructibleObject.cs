@@ -25,8 +25,12 @@ public class DestructibleObject : MonoBehaviour
             }
             
             float impulse = reducedMass * Vector3.Dot(collision.relativeVelocity, collision.contacts[0].normal);
-            
-            if (impulse > impulseThreshold) OnBreakEvent?.Invoke();
+
+            if (impulse > impulseThreshold)
+            {
+                OnBreakEvent?.Invoke();
+                Debug.Log("Impulse: " + impulse);
+            }
         };
 
         physicsObject.OnExplosionEvent += power =>

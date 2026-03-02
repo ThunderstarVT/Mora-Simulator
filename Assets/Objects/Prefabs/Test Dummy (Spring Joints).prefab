@@ -562,8 +562,8 @@ MonoBehaviour:
   - {fileID: 3852912411133586841}
   - {fileID: 2450124949615248647}
   - {fileID: 642214760535432298}
-  impulseThreshold: 20
-  explosionThreshold: 2.5
+  impulseThreshold: 100
+  explosionThreshold: 25
   activationNoise: 0.05
 --- !u!136 &6697648646319636908
 CapsuleCollider:

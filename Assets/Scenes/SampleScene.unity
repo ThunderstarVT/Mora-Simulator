@@ -1462,8 +1462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsObject: {fileID: 447006538}
-  impulseThreshold: 20
-  explosionThreshold: 2.5
+  impulseThreshold: 250
+  explosionThreshold: 75
 --- !u!114 &447006538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3014,6 +3014,14 @@ PrefabInstance:
     - target: {fileID: 5875471423730977073, guid: 743dbd7ffccfe834b8ba5c7139d94120, type: 3}
       propertyPath: ShapeModule.m_Scale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875471423730977073, guid: 743dbd7ffccfe834b8ba5c7139d94120, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875471423730977073, guid: 743dbd7ffccfe834b8ba5c7139d94120, type: 3}
+      propertyPath: EmissionModule.rateOverTime.minScalar
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
