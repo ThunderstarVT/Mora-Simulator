@@ -58,7 +58,7 @@ public class Ragdoll : PhysicsObject
         
         OnExplosionEventInvoke(power * comFalloff);
         
-        if (!ragdoll && power * comFalloff > explosionThreshold) SetActive();
+        if (!ragdoll && Mathf.Abs(power * comFalloff) > explosionThreshold) SetActive();
 
         if (!ragdoll) return;
         
