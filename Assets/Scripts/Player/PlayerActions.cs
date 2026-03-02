@@ -40,6 +40,12 @@ public class PlayerActions : MonoBehaviour
     
     private void Start()
     {
+        if (fireParticles)
+        {
+            ParticleSystem.EmissionModule emission = fireParticles.emission;
+            emission.enabled = breathingFire;
+        }
+        
         screamAudioSource.volume = SettingsManager.Instance.VoiceVolume;
         
         SettingsManager.OnApply += () => screamAudioSource.volume = SettingsManager.Instance.VoiceVolume;

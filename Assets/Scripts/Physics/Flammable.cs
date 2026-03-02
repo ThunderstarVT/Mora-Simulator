@@ -30,6 +30,12 @@ public class Flammable : MonoBehaviour
     private void Start()
     {
         Instances.Add(this);
+        
+        particles.ForEach(p =>
+        {
+            ParticleSystem.EmissionModule emission = p.emission;
+            emission.enabled = false;
+        });
 
         OnBurnEnd += () =>
         {
@@ -44,6 +50,8 @@ public class Flammable : MonoBehaviour
     private void OnDestroy()
     {
         Instances.Remove(this);
+        
+        if (burnCoroutine != null) StopCoroutine(burnCoroutine);
     }
 
 

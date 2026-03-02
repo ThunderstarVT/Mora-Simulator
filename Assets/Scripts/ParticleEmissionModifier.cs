@@ -5,22 +5,28 @@ using UnityEngine;
 
 public class ParticleEmissionModifier : MonoBehaviour
 {
-    private Dictionary<ParticleSystem.EmissionModule, float> particleSystems = new();
+    private Dictionary<ParticleSystem, float> particleSystems = new();
 
     private void Start()
     {
         foreach (ParticleSystem p in GetComponents<ParticleSystem>())
         {
-            particleSystems.Add(p.emission, p.emission.rateOverTimeMultiplier);
+            particleSystems.Add(p, p.emission.rateOverTimeMultiplier);
         }
-        
-        particleSystems.Keys.ToList().ForEach(e => 
-            e.rateOverTimeMultiplier = particleSystems[e] * SettingsManager.Instance.ParticleRateModifier);
+
+        particleSystems.Keys.ToList().ForEach(p =>
+        {
+            ParticleSystem.EmissionModule emission = p.emission;
+            emission.rateOverTimeMultiplier = particleSystems[p] * SettingsManager.Instance.ParticleRateModifier;
+        });
 
         SettingsManager.OnApply += () =>
         {
-            particleSystems.Keys.ToList().ForEach(e =>
-                e.rateOverTimeMultiplier = particleSystems[e] * SettingsManager.Instance.ParticleRateModifier);
+            particleSystems.Keys.ToList().ForEach(p =>
+            {
+                ParticleSystem.EmissionModule emission = p.emission;
+                emission.rateOverTimeMultiplier = particleSystems[p] * SettingsManager.Instance.ParticleRateModifier;
+            });
         };
     }
 }
