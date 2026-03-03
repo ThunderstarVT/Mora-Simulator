@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    private enum CameraMode
+    public enum CameraMode
     {
         NONE,
         ORBITAL
@@ -140,5 +140,10 @@ public class CameraController : MonoBehaviour
     {
         if (active) inputActions.Player.Enable();
         else inputActions.Player.Disable();
+    }
+    
+    public void setCameraMode(CameraMode mode)
+    {
+        cameraMode = mode;
     }
 }

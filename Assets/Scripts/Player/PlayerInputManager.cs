@@ -9,13 +9,12 @@ public class PlayerInputManager : MonoBehaviour
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
+        
+        inputActions.Player.Enable();
     }
 
     private void Start()
     {
-        inputActions.Player.Enable();
-        
-        
         inputActions.Player.movement.started += e => OnMovement?.Invoke(e);
         inputActions.Player.movement.performed += e => OnMovement?.Invoke(e);
         inputActions.Player.movement.canceled += e => OnMovement?.Invoke(e);
@@ -40,6 +39,13 @@ public class PlayerInputManager : MonoBehaviour
     private void OnDestroy()
     {
         inputActions.Player.Disable();
+    }
+    
+    
+    public void setInputActive(bool active)
+    {
+        if (active) inputActions.Player.Enable();
+        else inputActions.Player.Disable();
     }
 
 
