@@ -77,7 +77,7 @@ public class MenuManager : MonoBehaviour
     
     [Header("Level Scenes")]
     [SerializeField] private List<Level> levelScenes;
-    [SerializeField] private Transform levelSceneParent;
+    [SerializeField] private RectTransform levelSceneParent;
     [SerializeField] private GameObject levelScenePrefab;
     [SerializeField] private TextMeshProUGUI levelSceneDescription;
     private int levelScene_SelectedIndex = 0;
@@ -130,6 +130,11 @@ public class MenuManager : MonoBehaviour
             {
                 entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
             };
+
+            Vector2 delta = levelSceneParent.sizeDelta;
+            delta.y += ((RectTransform) go.transform).sizeDelta.y + 
+                       levelSceneParent.GetComponent<VerticalLayoutGroup>().spacing;
+            levelSceneParent.sizeDelta = delta;
         }
         
         SetLevelSceneSelected(0);
@@ -171,7 +176,7 @@ public class MenuManager : MonoBehaviour
         //bindingsTab.enabled = tab == MenuTab.KEY_BINDINGS;
         //optionsTab.enabled = tab == MenuTab.OPTIONS;
         //achievementsTab.enabled = tab == MenuTab.ACHIEVEMENTS;
-        //creditsTab.enabled = tab == MenuTab.CREDITS;
+        creditsTab.enabled = tab == MenuTab.CREDITS;
     }
 
     private void OnAnyKeyPressed(InputAction.CallbackContext context)
@@ -211,22 +216,22 @@ public class MenuManager : MonoBehaviour
     
     public void SetCurrentTab_KeyBindings()
     {
-        SetCurrentTab(MenuTab.PLAY);
+        SetCurrentTab(MenuTab.KEY_BINDINGS);
     }
     
     public void SetCurrentTab_Options()
     {
-        SetCurrentTab(MenuTab.PLAY);
+        SetCurrentTab(MenuTab.OPTIONS);
     }
     
     public void SetCurrentTab_Achievements()
     {
-        SetCurrentTab(MenuTab.PLAY);
+        SetCurrentTab(MenuTab.ACHIEVEMENTS);
     }
     
     public void SetCurrentTab_Credits()
     {
-        SetCurrentTab(MenuTab.PLAY);
+        SetCurrentTab(MenuTab.CREDITS);
     }
 
 
@@ -250,5 +255,11 @@ public class MenuManager : MonoBehaviour
         SetCurrentMenu(CurrentMenu.NONE);
         
         cameraController.setCameraMode(CameraController.CameraMode.ORBITAL);
+    }
+    
+    
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
