@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Singletons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -83,6 +84,37 @@ public class MenuManager : MonoBehaviour
     private int levelScene_SelectedIndex = 0;
     private Level levelScene_Selected => levelScenes[levelScene_SelectedIndex];
     public event Action<int> OnLevelSceneSelectedChange;
+    
+    [Header("Options Tab Requirements")]
+    [SerializeField] private TextMeshProUGUI mouseSenseX_Text;
+    [SerializeField] private Slider mouseSenseX_Slider;
+    [SerializeField] private TextMeshProUGUI mouseInvertX_Text;
+    [SerializeField] private Toggle mouseInvertX_Toggle;
+    [Space]
+    [SerializeField] private TextMeshProUGUI mouseSenseY_Text;
+    [SerializeField] private Slider mouseSenseY_Slider;
+    [SerializeField] private TextMeshProUGUI mouseInvertY_Text;
+    [SerializeField] private Toggle mouseInvertY_Toggle;
+    [Space]
+    [SerializeField] private TextMeshProUGUI mouseSenseZ_Text;
+    [SerializeField] private Slider mouseSenseZ_Slider;
+    [SerializeField] private TextMeshProUGUI mouseInvertZ_Text;
+    [SerializeField] private Toggle mouseInvertZ_Toggle;
+    [Space]
+    [SerializeField] private TextMeshProUGUI sfxVolume_Text;
+    [SerializeField] private Slider sfxVolume_Slider;
+    [Space]
+    [SerializeField] private TextMeshProUGUI musicVolume_Text;
+    [SerializeField] private Slider musicVolume_Slider;
+    [Space]
+    [SerializeField] private TextMeshProUGUI voiceVolume_Text;
+    [SerializeField] private Slider voiceVolume_Slider;
+    [Space]
+    [SerializeField] private TextMeshProUGUI buoyancyAccuracy_Text;
+    [SerializeField] private TMP_Dropdown buoyancyAccuracy_Dropdown;
+    [Space]
+    [SerializeField] private TextMeshProUGUI particleCount_Text;
+    [SerializeField] private TMP_Dropdown particleCount_Dropdown;
 
     [Serializable]
     private struct Level
@@ -170,13 +202,93 @@ public class MenuManager : MonoBehaviour
 
     private void SetCurrentTab(MenuTab tab)
     {
+        if (currentTab == MenuTab.OPTIONS && SettingsManager.Instance.UnsavedChanges)
+        {
+            // TODO: show warning thingy
+            
+            return;
+        }
+        
         currentTab = tab;
         
         playTab.enabled = tab == MenuTab.PLAY;
         //bindingsTab.enabled = tab == MenuTab.KEY_BINDINGS;
-        //optionsTab.enabled = tab == MenuTab.OPTIONS;
+        optionsTab.enabled = tab == MenuTab.OPTIONS;
         //achievementsTab.enabled = tab == MenuTab.ACHIEVEMENTS;
         creditsTab.enabled = tab == MenuTab.CREDITS;
+
+        if (tab == MenuTab.OPTIONS)
+        {
+            UpdateOptionsText();
+            UpdateOptionsSettings();
+        }
+    }
+
+    private void UpdateOptionsText()
+    {
+        if (SettingsManager.Instance.MouseSenseXChanged) mouseSenseX_Text.fontStyle |= FontStyles.Italic;
+        else mouseSenseX_Text.fontStyle &= ~FontStyles.Italic;
+        if (SettingsManager.Instance.MouseInvertXChanged) mouseInvertX_Text.fontStyle |= FontStyles.Italic;
+        else mouseInvertX_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.MouseSenseYChanged) mouseSenseY_Text.fontStyle |= FontStyles.Italic;
+        else mouseSenseY_Text.fontStyle &= ~FontStyles.Italic;
+        if (SettingsManager.Instance.MouseInvertYChanged) mouseInvertY_Text.fontStyle |= FontStyles.Italic;
+        else mouseInvertY_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.MouseSenseZChanged) mouseSenseZ_Text.fontStyle |= FontStyles.Italic;
+        else mouseSenseZ_Text.fontStyle &= ~FontStyles.Italic;
+        if (SettingsManager.Instance.MouseInvertZChanged) mouseInvertZ_Text.fontStyle |= FontStyles.Italic;
+        else mouseInvertZ_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.SfxVolumeChanged) sfxVolume_Text.fontStyle |= FontStyles.Italic;
+        else sfxVolume_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.MusicVolumeChanged) musicVolume_Text.fontStyle |= FontStyles.Italic;
+        else musicVolume_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.VoiceVolumeChanged) voiceVolume_Text.fontStyle |= FontStyles.Italic;
+        else voiceVolume_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.BuoyancyAccuracyChanged) buoyancyAccuracy_Text.fontStyle |= FontStyles.Italic;
+        else buoyancyAccuracy_Text.fontStyle &= ~FontStyles.Italic;
+        
+        if (SettingsManager.Instance.ParticleCountChanged) particleCount_Text.fontStyle |= FontStyles.Italic;
+        else particleCount_Text.fontStyle &= ~FontStyles.Italic;
+    }
+
+    private void UpdateOptionsSettings()
+    {
+        mouseSenseX_Slider.value = SettingsManager.Instance.mouseSenseX;
+        mouseInvertX_Toggle.isOn = SettingsManager.Instance.mouseInvertX;
+        
+        mouseSenseY_Slider.value = SettingsManager.Instance.mouseSenseY;
+        mouseInvertY_Toggle.isOn = SettingsManager.Instance.mouseInvertY;
+        
+        mouseSenseZ_Slider.value = SettingsManager.Instance.mouseSenseZ;
+        mouseInvertZ_Toggle.isOn = SettingsManager.Instance.mouseInvertY;
+        
+        sfxVolume_Slider.value = SettingsManager.Instance.sfxVolume;
+        musicVolume_Slider.value = SettingsManager.Instance.musicVolume;
+        voiceVolume_Slider.value = SettingsManager.Instance.voiceVolume;
+
+        buoyancyAccuracy_Dropdown.value = SettingsManager.Instance.buoyancyAccuracy switch
+        {
+            SettingsManager.Options.POTATO => 0,
+            SettingsManager.Options.LOW => 1,
+            SettingsManager.Options.MID => 2,
+            SettingsManager.Options.HIGH => 3,
+            _ => 2
+        };
+
+        particleCount_Dropdown.value = SettingsManager.Instance.particleCount switch
+        {
+            SettingsManager.Options.POTATO => 0,
+            SettingsManager.Options.LOW => 1,
+            SettingsManager.Options.MID => 2,
+            SettingsManager.Options.HIGH => 3,
+            _ => 2
+        };
     }
 
     private void OnAnyKeyPressed(InputAction.CallbackContext context)
@@ -255,6 +367,108 @@ public class MenuManager : MonoBehaviour
         SetCurrentMenu(CurrentMenu.NONE);
         
         cameraController.setCameraMode(CameraController.CameraMode.ORBITAL);
+    }
+
+
+    public void OptionsApply()
+    {
+        SettingsManager.Instance.Apply();
+        
+        UpdateOptionsText();
+        UpdateOptionsSettings();
+    }
+
+    public void OptionsRevert()
+    {
+        SettingsManager.Instance.Revert();
+        
+        UpdateOptionsText();
+        UpdateOptionsSettings();
+    }
+
+
+    public void OptionsChange_MouseSenseX(float value)
+    {
+        SettingsManager.Instance.mouseSenseX = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_MouseInvertX(bool value)
+    {
+        SettingsManager.Instance.mouseInvertX = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_MouseSenseY(float value)
+    {
+        SettingsManager.Instance.mouseSenseY = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_MouseInvertY(bool value)
+    {
+        SettingsManager.Instance.mouseInvertY = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_MouseSenseZ(float value)
+    {
+        SettingsManager.Instance.mouseSenseZ = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_MouseInvertZ(bool value)
+    {
+        SettingsManager.Instance.mouseInvertZ = value;
+        UpdateOptionsText();
+    }
+    
+
+    public void OptionsChange_SfxVolume(float value)
+    {
+        SettingsManager.Instance.sfxVolume = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_MusicVolume(float value)
+    {
+        SettingsManager.Instance.musicVolume = value;
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_VoiceVolume(float value)
+    {
+        SettingsManager.Instance.voiceVolume = value;
+        UpdateOptionsText();
+    }
+
+
+    public void OptionsChange_BuoyancyAccuracy(int value)
+    {
+        SettingsManager.Instance.buoyancyAccuracy = value switch
+        {
+            0 => SettingsManager.Options.POTATO,
+            1 => SettingsManager.Options.LOW,
+            2 => SettingsManager.Options.MID,
+            3 => SettingsManager.Options.HIGH,
+            _ => SettingsManager.Options.MID
+        };
+        
+        UpdateOptionsText();
+    }
+
+    public void OptionsChange_ParticleCount(int value)
+    {
+        SettingsManager.Instance.particleCount = value switch
+        {
+            0 => SettingsManager.Options.POTATO,
+            1 => SettingsManager.Options.LOW,
+            2 => SettingsManager.Options.MID,
+            3 => SettingsManager.Options.HIGH,
+            _ => SettingsManager.Options.MID
+        };
+        
+        UpdateOptionsText();
     }
     
     
