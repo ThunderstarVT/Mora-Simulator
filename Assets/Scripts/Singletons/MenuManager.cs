@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Singletons;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -59,7 +60,7 @@ public class MenuManager : MonoBehaviour
         NONE
     }
     
-    private bool initialized = false;
+    private bool initialized;
     
     [SerializeField] private CurrentMenu currentMenu;
     [SerializeField] private MenuTab currentTab;
@@ -81,7 +82,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private RectTransform levelSceneParent;
     [SerializeField] private GameObject levelScenePrefab;
     [SerializeField] private TextMeshProUGUI levelSceneDescription;
-    private int levelScene_SelectedIndex = 0;
+    private int levelScene_SelectedIndex;
     private Level levelScene_Selected => levelScenes[levelScene_SelectedIndex];
     public event Action<int> OnLevelSceneSelectedChange;
     
@@ -131,6 +132,7 @@ public class MenuManager : MonoBehaviour
     {
         if (!initialized) Init();
     }
+    
 
     private void Init()
     {
@@ -162,18 +164,23 @@ public class MenuManager : MonoBehaviour
             {
                 entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
             };
-
-            Vector2 delta = levelSceneParent.sizeDelta;
-            delta.y += ((RectTransform) go.transform).sizeDelta.y + 
-                       levelSceneParent.GetComponent<VerticalLayoutGroup>().spacing;
-            levelSceneParent.sizeDelta = delta;
         }
         
-        SetLevelSceneSelected(0);
+        SetLevelSceneSelected(levelScenes.FindIndex(level => 
+            SceneManager.GetActiveScene().name.Equals(level.sceneName)));
+        
+        initialized = true;
     }
 
-    private void SetCurrentMenu(CurrentMenu menu)
+    private bool SetCurrentMenu(CurrentMenu menu)
     {
+        if (currentTab == MenuTab.OPTIONS && SettingsManager.Instance.UnsavedChanges)
+        {
+            // TODO: show warning thingy
+            
+            return false;
+        }
+        
         currentMenu = menu;
         
         SetCurrentTab(MenuTab.NONE);
@@ -198,15 +205,17 @@ public class MenuManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        
+        return true;
     }
 
-    private void SetCurrentTab(MenuTab tab)
+    private bool SetCurrentTab(MenuTab tab)
     {
         if (currentTab == MenuTab.OPTIONS && SettingsManager.Instance.UnsavedChanges)
         {
             // TODO: show warning thingy
             
-            return;
+            return false;
         }
         
         currentTab = tab;
@@ -214,7 +223,7 @@ public class MenuManager : MonoBehaviour
         playTab.enabled = tab == MenuTab.PLAY;
         //bindingsTab.enabled = tab == MenuTab.KEY_BINDINGS;
         optionsTab.enabled = tab == MenuTab.OPTIONS;
-        //achievementsTab.enabled = tab == MenuTab.ACHIEVEMENTS;
+        achievementsTab.enabled = tab == MenuTab.ACHIEVEMENTS;
         creditsTab.enabled = tab == MenuTab.CREDITS;
 
         if (tab == MenuTab.OPTIONS)
@@ -222,6 +231,8 @@ public class MenuManager : MonoBehaviour
             UpdateOptionsText();
             UpdateOptionsSettings();
         }
+        
+        return true;
     }
 
     private void UpdateOptionsText()
@@ -321,9 +332,10 @@ public class MenuManager : MonoBehaviour
     
     public void SetCurrentTab_Play()
     {
-        SetCurrentTab(MenuTab.PLAY);
+        if (!SetCurrentTab(MenuTab.PLAY)) return;
 
-        SetLevelSceneSelected(0);
+        SetLevelSceneSelected(levelScenes.FindIndex(level => 
+            SceneManager.GetActiveScene().name.Equals(level.sceneName)));
     }
     
     public void SetCurrentTab_KeyBindings()
@@ -349,6 +361,8 @@ public class MenuManager : MonoBehaviour
 
     public void SetLevelSceneSelected(int index)
     {
+        if (index < 0 || index >= levelScenes.Count) index = 0;
+        
         levelScene_SelectedIndex = index;
 
         levelSceneDescription.text = levelScene_Selected.description;
@@ -359,14 +373,61 @@ public class MenuManager : MonoBehaviour
 
     public void StartLevel()
     {
-        if (true)
+        if (!SetCurrentMenu(CurrentMenu.NONE)) return;
+        
+        if (levelScene_Selected.sceneName != SceneManager.GetActiveScene().name)
         {
             SceneManager.LoadScene(levelScene_Selected.sceneName);
         }
         
-        SetCurrentMenu(CurrentMenu.NONE);
+        cameraController.setCameraMode(CameraController.CameraMode.ORBITAL);
+    }
+
+    public void QuitLevel()
+    {
+        if (!SetCurrentMenu(CurrentMenu.TITLE_SCREEN)) return;
+
+        SceneManager.sceneLoaded += QuitLevel_OnSceneLoaded;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void QuitLevel_OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= QuitLevel_OnSceneLoaded;
+        
+        cameraController.setCameraMode(CameraController.CameraMode.NONE); // unimplemented path follow mode
+
+        SetCurrentMenu(CurrentMenu.TITLE_SCREEN);
+    }
+    
+
+    public void RespawnLevel()
+    {
+        if (!SetCurrentMenu(CurrentMenu.NONE)) return;
+        
+        Transform player = playerInputManager.transform;
+        Transform spawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+        
+        player.GetComponent<Ragdoll>().SetInactive();
+        player.SetPositionAndRotation(spawn.position, spawn.rotation);
         
         cameraController.setCameraMode(CameraController.CameraMode.ORBITAL);
+    }
+
+    public void RestartLevel()
+    {
+        if (!SetCurrentMenu(CurrentMenu.NONE)) return;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        cameraController.setCameraMode(CameraController.CameraMode.ORBITAL);
+    }
+
+    public void ResumeLevel()
+    {
+        if (!SetCurrentMenu(currentMenu)) return;
+        
+        if (currentMenu == CurrentMenu.PAUSE_MENU) OnPause(new InputAction.CallbackContext());
     }
 
 
