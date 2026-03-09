@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] private float power = 0.0f;
+    [SerializeField] private float power;
 
     private void Start()
     {

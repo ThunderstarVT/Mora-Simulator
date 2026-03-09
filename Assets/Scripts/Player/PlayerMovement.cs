@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
                 
                 Vector3 targetVelocity = Vector3.ProjectOnPlane(flatTargetVelocity, GroundNormal);
                 
-                Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, groundedVelocitySmoothing * Time.deltaTime);
+                Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, groundedVelocitySmoothing * Time.fixedDeltaTime);
                 
                 rb.linearVelocity = newLinearVelocity;
             }
@@ -109,14 +109,14 @@ public class PlayerMovement : MonoBehaviour
                                          * new Vector3(inputDirection.x, 0, inputDirection.y) 
                                          * walkSpeed;
                 
-                Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, airborneVelocitySmoothing * Time.deltaTime);
+                Vector3 newLinearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, airborneVelocitySmoothing * Time.fixedDeltaTime);
                 
                 rb.linearVelocity = new Vector3(newLinearVelocity.x, rb.linearVelocity.y, newLinearVelocity.z);
             }
             
             // turn the player
             rb.rotation = Quaternion.Lerp(rb.rotation, Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0), 
-                turnSpeed * inputDirection.magnitude * Time.deltaTime);
+                turnSpeed * inputDirection.magnitude * Time.fixedDeltaTime);
         }
     }
 

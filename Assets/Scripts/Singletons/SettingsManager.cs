@@ -36,13 +36,13 @@ namespace Singletons
         private void Start()
         {
             //TODO: load from player prefs
-            
-            Apply();
 
             OnApply += () =>
             {
                 //TODO: save to player prefs on apply
             };
+            
+            Apply();
         }
 
 

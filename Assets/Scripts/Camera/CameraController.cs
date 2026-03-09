@@ -119,10 +119,10 @@ public class CameraController : MonoBehaviour
         {
             case CameraMode.ORBITAL:
             {
-                orbitalAngle = new Vector2(orbitalAngle.x + horizontal * Time.deltaTime, 
-                    Mathf.Clamp(orbitalAngle.y + vertical * Time.deltaTime, orbitalMinVertical, orbitalMaxVertical));
+                orbitalAngle = new Vector2(orbitalAngle.x + horizontal * Time.fixedDeltaTime, 
+                    Mathf.Clamp(orbitalAngle.y + vertical * Time.fixedDeltaTime, orbitalMinVertical, orbitalMaxVertical));
                 
-                orbitalTargetDistance = Mathf.Clamp(orbitalTargetDistance + zoom * Time.deltaTime, orbitalMinDistance, orbitalMaxDistance);
+                orbitalTargetDistance = Mathf.Clamp(orbitalTargetDistance + zoom * Time.fixedDeltaTime, orbitalMinDistance, orbitalMaxDistance);
                 
                 break;
             }
