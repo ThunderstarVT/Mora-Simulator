@@ -6,7 +6,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
+using Slider = UnityEngine.UI.Slider;
+using Toggle = UnityEngine.UI.Toggle;
 
 public class MenuManager : MonoBehaviour
 {
@@ -116,6 +119,16 @@ public class MenuManager : MonoBehaviour
     [Space]
     [SerializeField] private TextMeshProUGUI particleCount_Text;
     [SerializeField] private TMP_Dropdown particleCount_Dropdown;
+    
+    [Header("Bindings Tab Requirements")]
+    [SerializeField] private TextMeshProUGUI movementBind_Text;
+    [SerializeField] private TextMeshProUGUI sprintBind_Text;
+    [SerializeField] private TextMeshProUGUI jumpBind_Text;
+    [SerializeField] private TextMeshProUGUI kickBind_Text;
+    [SerializeField] private TextMeshProUGUI eatBind_Text;
+    [SerializeField] private TextMeshProUGUI breatheFireBind_Text;
+    [SerializeField] private TextMeshProUGUI screamBind_Text;
+    [SerializeField] private TextMeshProUGUI ragdollBind_Text;
 
     [Serializable]
     private struct Level
@@ -221,17 +234,22 @@ public class MenuManager : MonoBehaviour
         currentTab = tab;
         
         playTab.enabled = tab == MenuTab.PLAY;
-        //bindingsTab.enabled = tab == MenuTab.KEY_BINDINGS;
+        bindingsTab.enabled = tab == MenuTab.KEY_BINDINGS;
         optionsTab.enabled = tab == MenuTab.OPTIONS;
         achievementsTab.enabled = tab == MenuTab.ACHIEVEMENTS;
         creditsTab.enabled = tab == MenuTab.CREDITS;
 
-        if (tab == MenuTab.OPTIONS)
+        switch (tab)
         {
-            UpdateOptionsText();
-            UpdateOptionsSettings();
+            case MenuTab.OPTIONS:
+                UpdateOptionsText();
+                UpdateOptionsSettings();
+                break;
+            case MenuTab.KEY_BINDINGS:
+                UpdateBindingsText();
+                break;
         }
-        
+
         return true;
     }
 
@@ -302,6 +320,18 @@ public class MenuManager : MonoBehaviour
         };
     }
 
+    private void UpdateBindingsText()
+    {
+        movementBind_Text.text = GetBindingsString(inputActions.Player.movement);
+        sprintBind_Text.text = GetBindingsString(inputActions.Player.sprint);
+        jumpBind_Text.text = GetBindingsString(inputActions.Player.jump);
+        kickBind_Text.text = GetBindingsString(inputActions.Player.kick);
+        eatBind_Text.text = GetBindingsString(inputActions.Player.eat);
+        breatheFireBind_Text.text = GetBindingsString(inputActions.Player.breatheFire);
+        screamBind_Text.text = GetBindingsString(inputActions.Player.makeSound);
+        ragdollBind_Text.text = GetBindingsString(inputActions.Player.ragdoll);
+    }
+
     private void OnAnyKeyPressed(InputAction.CallbackContext context)
     {
         if (currentMenu == CurrentMenu.TITLE_SCREEN)
@@ -368,6 +398,29 @@ public class MenuManager : MonoBehaviour
         levelSceneDescription.text = levelScene_Selected.description;
         
         OnLevelSceneSelectedChange?.Invoke(levelScene_SelectedIndex);
+    }
+
+
+    private string GetBindingsString(InputAction action)
+    {
+        string bindingsString = "";
+
+        for (int i = 0; i < action.bindings.Count; i++)
+        {
+            InputBinding binding = action.bindings[i];
+            
+            if (binding.isPartOfComposite) continue;
+            
+            string display = action.GetBindingDisplayString(i);
+
+            if (i > 0) bindingsString += " / ";
+            
+            if (binding.isComposite) bindingsString += "[";
+            bindingsString += display;
+            if (binding.isComposite) bindingsString += "]";
+        }
+        
+        return bindingsString;
     }
 
 
