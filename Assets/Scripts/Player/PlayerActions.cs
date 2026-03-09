@@ -10,10 +10,11 @@ using Random = UnityEngine.Random;
 using UnityEditor;
 #endif
 
-[RequireComponent(typeof(PlayerInputManager))]
+[RequireComponent(typeof(PlayerInputManager)), RequireComponent(typeof(PlayerMovement))]
 public class PlayerActions : MonoBehaviour
 {
     [SerializeField] private PlayerInputManager inputManager;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Ragdoll ragdoll;
 
     [Header("Kick Settings")] 
@@ -161,6 +162,9 @@ public class PlayerActions : MonoBehaviour
 
             PhysicsObject first = physicsObjectsInKick
                 .OrderBy(obj => Vector3.Distance(kickOrigin.position, obj.GetCenter())).First();
+            
+            string objectName = first.GetComponent<NameHaver>()?.Name;
+            ScoreTracker.Instance.AwardPoints(50, playerMovement.IsGrounded ? "kick" : "air_kick", (playerMovement.IsGrounded ? "Kick " : "Air kick ") + objectName);
             
             first.OnKickedEventInvoke(kickImpulse);
             first.AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse, 
