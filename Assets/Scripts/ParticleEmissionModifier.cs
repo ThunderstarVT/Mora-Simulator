@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Singletons;
@@ -14,19 +15,22 @@ public class ParticleEmissionModifier : MonoBehaviour
             particleSystems.Add(p, p.emission.rateOverTimeMultiplier);
         }
 
+        OnApply();
+
+        SettingsManager.OnApply += OnApply;
+    }
+
+    private void OnDestroy()
+    {
+        SettingsManager.OnApply -= OnApply;
+    }
+
+    private void OnApply()
+    {
         particleSystems.Keys.ToList().ForEach(p =>
         {
             ParticleSystem.EmissionModule emission = p.emission;
             emission.rateOverTimeMultiplier = particleSystems[p] * SettingsManager.Instance.ParticleRateModifier;
         });
-
-        SettingsManager.OnApply += () =>
-        {
-            particleSystems.Keys.ToList().ForEach(p =>
-            {
-                ParticleSystem.EmissionModule emission = p.emission;
-                emission.rateOverTimeMultiplier = particleSystems[p] * SettingsManager.Instance.ParticleRateModifier;
-            });
-        };
     }
 }

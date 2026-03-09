@@ -45,15 +45,25 @@ public class PlayerActions : MonoBehaviour
             ParticleSystem.EmissionModule emission = fireParticles.emission;
             emission.enabled = breathingFire;
         }
+
+        UpdateAudioVolume();
         
-        screamAudioSource.volume = SettingsManager.Instance.VoiceVolume;
-        
-        SettingsManager.OnApply += () => screamAudioSource.volume = SettingsManager.Instance.VoiceVolume;
+        SettingsManager.OnApply += UpdateAudioVolume;
         
         inputManager.OnKick += OnKick;
         inputManager.OnEat += OnEat;
         inputManager.OnBreatheFire += OnBreatheFire;
         inputManager.OnMakeSound += OnScream;
+    }
+
+    private void OnDestroy()
+    {
+        SettingsManager.OnApply -= UpdateAudioVolume;
+    }
+
+    private void UpdateAudioVolume()
+    {
+        screamAudioSource.volume = SettingsManager.Instance.VoiceVolume;
     }
 
     private void FixedUpdate()
@@ -179,14 +189,16 @@ public class PlayerActions : MonoBehaviour
             emission.enabled = breathingFire;
         }
     }
-
+    
+    private AudioClip lastScreamClip;
     private void OnScream(InputAction.CallbackContext context)
     {
         OnScreamEvent?.Invoke();
         
         if (screamAudioClips.Count < 1) return;
         
-        AudioClip clip = screamAudioClips.OrderBy(c => Random.value).First();
+        AudioClip clip = screamAudioClips.OrderBy(_ => Random.value).First(c => c != lastScreamClip);
+        lastScreamClip = clip;
         screamAudioSource.PlayOneShot(clip);
     }
     
