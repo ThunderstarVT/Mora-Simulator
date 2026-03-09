@@ -35,11 +35,42 @@ namespace Singletons
 
         private void Start()
         {
-            //TODO: load from player prefs
+            if (PlayerPrefs.HasKey("Settings_MouseSenseX")) mouseSenseX = PlayerPrefs.GetFloat("Settings_MouseSenseX");
+            if (PlayerPrefs.HasKey("Settings_MouseInvertX"))
+                mouseInvertX = PlayerPrefs.GetInt("Settings_MouseInvertX") > 0;
+            if (PlayerPrefs.HasKey("Settings_MouseSenseY")) mouseSenseY = PlayerPrefs.GetFloat("Settings_MouseSenseY");
+            if (PlayerPrefs.HasKey("Settings_MouseInvertY"))
+                mouseInvertY = PlayerPrefs.GetInt("Settings_MouseInvertY") > 0;
+            if (PlayerPrefs.HasKey("Settings_MouseSenseZ")) mouseSenseX = PlayerPrefs.GetFloat("Settings_MouseSenseZ");
+            if (PlayerPrefs.HasKey("Settings_MouseInvertZ"))
+                mouseInvertZ = PlayerPrefs.GetInt("Settings_MouseInvertZ") > 0;
+            
+            if (PlayerPrefs.HasKey("Settings_SfxVolume")) sfxVolume = PlayerPrefs.GetFloat("Settings_SfxVolume");
+            if (PlayerPrefs.HasKey("Settings_MusicVolume")) musicVolume = PlayerPrefs.GetFloat("Settings_MusicVolume");
+            if (PlayerPrefs.HasKey("Settings_VoiceVolume")) voiceVolume = PlayerPrefs.GetFloat("Settings_VoiceVolume");
+            
+            if (PlayerPrefs.HasKey("Settings_BuoyancyAccuracy")) 
+                buoyancyAccuracy = (Options)PlayerPrefs.GetInt("Settings_BuoyancyAccuracy");
+            if (PlayerPrefs.HasKey("Settings_ParticleCount"))
+                particleCount = (Options)PlayerPrefs.GetInt("Settings_ParticleCount");
 
             OnApply += () =>
             {
-                //TODO: save to player prefs on apply
+                PlayerPrefs.SetFloat("Settings_MouseSenseX", mouseSenseX);
+                PlayerPrefs.SetInt("Settings_MouseInvertX", mouseInvertX ? 1 : 0);
+                PlayerPrefs.SetFloat("Settings_MouseSenseY", mouseSenseY);
+                PlayerPrefs.SetInt("Settings_MouseInvertY", mouseInvertY ? 1 : 0);
+                PlayerPrefs.SetFloat("Settings_MouseSenseZ", mouseSenseZ);
+                PlayerPrefs.SetInt("Settings_MouseInvertZ", mouseInvertZ ? 1 : 0);
+                
+                PlayerPrefs.SetFloat("Settings_SfxVolume", sfxVolume);
+                PlayerPrefs.SetFloat("Settings_MusicVolume", musicVolume);
+                PlayerPrefs.SetFloat("Settings_VoiceVolume", voiceVolume);
+                
+                PlayerPrefs.SetInt("Settings_BuoyancyAccuracy", (int)buoyancyAccuracy);
+                PlayerPrefs.SetInt("Settings_ParticleCount", (int)particleCount);
+                
+                PlayerPrefs.Save();
             };
             
             Apply();
