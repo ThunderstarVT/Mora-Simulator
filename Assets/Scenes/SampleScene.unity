@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Null
+  name: Gas Canister
 --- !u!1 &73182543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Null
+  name: Gas Canister
 --- !u!4 &559706497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5766012303154269982, guid: cf7c8cdd7b5cb4246859058433d37607, type: 3}
@@ -7375,7 +7375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245778112898752228, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -591.4998
+      value: -591.49896
       objectReference: {fileID: 0}
     - target: {fileID: 7282913729619442663, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9553,7 +9553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Null
+  name: Cube
 --- !u!1001 &1969115134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9864,7 +9864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Null
+  name: Gas Canister
 --- !u!1 &2069082315
 GameObject:
   m_ObjectHideFlags: 0
