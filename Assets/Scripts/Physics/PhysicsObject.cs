@@ -5,7 +5,7 @@ using Singletons;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(NameHaver))]
 public class PhysicsObject : MonoBehaviour
 {
     public static List<PhysicsObject> Instances { get; } = new();

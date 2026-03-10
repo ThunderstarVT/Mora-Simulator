@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(NameHaver))]
 public class Flammable : MonoBehaviour
 {
     public static List<Flammable> Instances { get; } = new();

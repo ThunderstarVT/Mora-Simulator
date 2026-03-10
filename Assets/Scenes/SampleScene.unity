@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 22653611}
   - component: {fileID: 22653610}
   - component: {fileID: 22653609}
+  - component: {fileID: 22653619}
   m_Layer: 0
   m_Name: Explosive Gas Canister (1)
   m_TagString: Untagged
@@ -351,6 +352,19 @@ Transform:
   - {fileID: 216329721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22653619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22653608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Null
 --- !u!1 &73182543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1810,7 @@ GameObject:
   - component: {fileID: 447006537}
   - component: {fileID: 447006545}
   - component: {fileID: 447006536}
+  - component: {fileID: 447006546}
   m_Layer: 0
   m_Name: Explosive Gas Canister
   m_TagString: Untagged
@@ -2010,6 +2025,19 @@ MonoBehaviour:
   - {fileID: 447006540}
   particles:
   - {fileID: 1920729288}
+--- !u!114 &447006546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447006535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Null
 --- !u!4 &559706497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5766012303154269982, guid: cf7c8cdd7b5cb4246859058433d37607, type: 3}
@@ -2034,6 +2062,7 @@ GameObject:
   - component: {fileID: 624195942}
   - component: {fileID: 624195941}
   - component: {fileID: 624195940}
+  - component: {fileID: 624195946}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -2174,6 +2203,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624195946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624195939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Null
 --- !u!1 &737285826
 GameObject:
   m_ObjectHideFlags: 0
@@ -7333,7 +7375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245778112898752228, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -591.4994
+      value: -591.4998
       objectReference: {fileID: 0}
     - target: {fileID: 7282913729619442663, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8945,6 +8987,7 @@ GameObject:
   - component: {fileID: 1809463094}
   - component: {fileID: 1809463093}
   - component: {fileID: 1809463092}
+  - component: {fileID: 1809463098}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -9085,6 +9128,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809463098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809463091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Null
 --- !u!1 &1816548202
 GameObject:
   m_ObjectHideFlags: 0
@@ -9346,6 +9402,7 @@ GameObject:
   - component: {fileID: 1958591498}
   - component: {fileID: 1958591497}
   - component: {fileID: 1958591496}
+  - component: {fileID: 1958591502}
   m_Layer: 0
   m_Name: Ice Cube
   m_TagString: Untagged
@@ -9484,6 +9541,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
+--- !u!114 &1958591502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958591495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Null
 --- !u!1001 &1969115134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9567,6 +9637,7 @@ GameObject:
   - component: {fileID: 2040300787}
   - component: {fileID: 2040300786}
   - component: {fileID: 2040300785}
+  - component: {fileID: 2040300795}
   m_Layer: 0
   m_Name: Explosive Gas Canister (2)
   m_TagString: Untagged
@@ -9781,6 +9852,19 @@ Transform:
   - {fileID: 1759828305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2040300795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040300784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88efa97f91b5f04f874ed6299b750e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Null
 --- !u!1 &2069082315
 GameObject:
   m_ObjectHideFlags: 0

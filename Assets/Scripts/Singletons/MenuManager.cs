@@ -588,6 +588,8 @@ public class MenuManager : MonoBehaviour
     
     public void QuitGame()
     {
+        if (!SetCurrentTab(currentTab)) return;
+        
         Application.Quit();
     }
 }

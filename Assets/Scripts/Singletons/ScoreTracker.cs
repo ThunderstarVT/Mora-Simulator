@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -37,6 +38,15 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField] private TextMeshProUGUI comboPointText;
     [SerializeField] private TextMeshProUGUI comboMultiplierText;
     [SerializeField] private TextMeshProUGUI comboDisplayText;
+    [SerializeField] private TextMeshProUGUI comboLogText;
+    
+    [Header("Score Popup Objects & Settings")]
+    [SerializeField] private RectTransform scorePopupOrigin;
+    [SerializeField, Min(0)] private float scorePopupScale = 1.0f;
+    [SerializeField, Min(0)] private float scorePopupDuration = 1.0f;
+    [SerializeField] private Vector2 scorePopupVelocity;
+    [SerializeField] private Vector2 scorePopupVelocityNoise;
+    [SerializeField] private Vector2 scorePopupPositionNoise;
     
     [Header("Debug Stuff")]
     [SerializeField] private long score;
@@ -51,6 +61,8 @@ public class ScoreTracker : MonoBehaviour
     
     private Dictionary<string, int> typeCounts = new();
     private HashSet<string> uniqueTypes = new();
+    
+    private List<string> comboLogStrings = new();
     
     
     public event Action<long, long, long> OnScoreChanged;
@@ -70,8 +82,45 @@ public class ScoreTracker : MonoBehaviour
             comboPointText.text = _points.ToString();
             comboMultiplierText.text = "×" + _multiplier;
             comboDisplayText.text = _displayText;
+        };
+
+        OnPointsAwarded += (_displayText, _points, _multiplier, _added) =>
+        {
+            ScorePopup.Summon(_added, scorePopupScale, scorePopupDuration,
+                    scorePopupVelocity + new Vector2(
+                        Random.value * scorePopupVelocityNoise.x - Random.value * scorePopupVelocityNoise.x,
+                        Random.value * scorePopupVelocityNoise.y - Random.value * scorePopupVelocityNoise.y),
+                    scorePopupOrigin)
+                .transform.localPosition = new Vector3(
+                Random.value * scorePopupPositionNoise.x - Random.value * scorePopupPositionNoise.x,
+                Random.value * scorePopupPositionNoise.y - Random.value * scorePopupPositionNoise.y);
+        };
+
+        OnPointsAwarded += (_displayText, _points, _multiplier, _added) =>
+        {
+            comboLogStrings.Add(_displayText);
+
+            string text = "";
+
+            for (int i = 0; i < comboLogStrings.Count; i++)
+            {
+                int count = 1;
+                string logString = comboLogStrings[i];
+
+                while (i < comboLogStrings.Count - 1)
+                {
+                    if (comboLogStrings[i + 1] != logString) break;
+                        
+                    count++;
+                    i++;
+                }
+
+                if (i > 0) text += "\n";
+                if (count > 1) text += $"{count}× ";
+                text += logString;
+            }
             
-            //TODO: summon floating number that shows _added with initial size based on the value
+            comboLogText.text = text;
         };
         
         
@@ -129,6 +178,7 @@ public class ScoreTracker : MonoBehaviour
         comboPoints = 0;
         typeCounts.Clear();
         uniqueTypes.Clear();
+        comboLogStrings.Clear();
     }
     
     private void EndCombo()
@@ -146,6 +196,7 @@ public class ScoreTracker : MonoBehaviour
         comboPoints = 0;
         typeCounts.Clear();
         uniqueTypes.Clear();
+        comboLogStrings.Clear();
     }
 
 
