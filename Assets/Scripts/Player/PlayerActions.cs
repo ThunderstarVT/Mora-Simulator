@@ -78,7 +78,7 @@ public class PlayerActions : MonoBehaviour
                 Physics.AllLayers, QueryTriggerInteraction.Collide);
             
             foreach (Flammable flammable in Flammable.Instances.Where(
-                         f => f.CanBurn && !f.IsBurning && f.Colliders.Any(c => hits.Contains(c))))
+                         f => f.CanBurn && !f.IsBurning && f.Colliders.Any(c => hits.Any(h => h == c && h.name == c.name))))
             {
                 flammable.StartBurn();
             }
