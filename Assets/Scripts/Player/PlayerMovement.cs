@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Vector3 flatTargetVelocity = Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0) 
                                              * new Vector3(inputDirection.x, 0, inputDirection.y) 
-                                             * (sprinting && inputDirection.y > Mathf.Abs(inputDirection.x) ? sprintSpeed : walkSpeed);
+                                             * (sprinting && inputDirection.y > 0.9f * Mathf.Abs(inputDirection.x) ? sprintSpeed : walkSpeed);
                 
                 Vector3 targetVelocity = Vector3.ProjectOnPlane(flatTargetVelocity, GroundNormal);
                 
