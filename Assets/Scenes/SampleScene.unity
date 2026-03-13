@@ -7463,7 +7463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245778112898752228, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -591.4998
+      value: -591.4999
       objectReference: {fileID: 0}
     - target: {fileID: 7282913729619442663, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10069,18 +10069,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4634642392603940275, guid: 4eb85683574007749b4e9056b080277a, type: 3}
-      propertyPath: mouseSenseX
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4634642392603940275, guid: 4eb85683574007749b4e9056b080277a, type: 3}
-      propertyPath: mouseSenseY
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4634642392603940275, guid: 4eb85683574007749b4e9056b080277a, type: 3}
-      propertyPath: mouseSenseZ
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5289154352040387239, guid: 4eb85683574007749b4e9056b080277a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
