@@ -41,7 +41,7 @@ namespace Singletons
             if (PlayerPrefs.HasKey("Settings_MouseSenseY")) mouseSenseY = PlayerPrefs.GetFloat("Settings_MouseSenseY");
             if (PlayerPrefs.HasKey("Settings_MouseInvertY"))
                 mouseInvertY = PlayerPrefs.GetInt("Settings_MouseInvertY") > 0;
-            if (PlayerPrefs.HasKey("Settings_MouseSenseZ")) mouseSenseX = PlayerPrefs.GetFloat("Settings_MouseSenseZ");
+            if (PlayerPrefs.HasKey("Settings_MouseSenseZ")) mouseSenseZ = PlayerPrefs.GetFloat("Settings_MouseSenseZ");
             if (PlayerPrefs.HasKey("Settings_MouseInvertZ"))
                 mouseInvertZ = PlayerPrefs.GetInt("Settings_MouseInvertZ") > 0;
             
