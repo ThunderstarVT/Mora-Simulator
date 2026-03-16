@@ -67,6 +67,8 @@ public class Flammable : MonoBehaviour
             });
             
             burnCoroutine = StartCoroutine(BurnCoroutine());
+            
+            ScoreTracker.Instance.AwardPoints(100, "burn", "Burn " + GetComponent<NameHaver>().Name);
         }
     }
 

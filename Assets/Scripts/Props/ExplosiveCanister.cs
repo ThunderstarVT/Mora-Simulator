@@ -13,28 +13,22 @@ public class ExplosiveCanister : MonoBehaviour
     
     void Start()
     {
-        destructibleObject.OnBreakEvent += () =>
-        {
-            if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, explosionOrigin.rotation);
-
-            GameObject explosionObject = new GameObject();
-            explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, explosionOrigin.rotation);
-            Explosion explosion = explosionObject.AddComponent<Explosion>();
-            explosion.SetPower(explosionPower);
-            
-            Destroy(gameObject);
-        };
+        destructibleObject.OnBreakEvent += Explode;
         
-        flammable.OnBurnEnd += () =>
-        {
-            if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, explosionOrigin.rotation);
+        flammable.OnBurnEnd += Explode;
+    }
 
-            GameObject explosionObject = new GameObject();
-            explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, explosionOrigin.rotation);
-            Explosion explosion = explosionObject.AddComponent<Explosion>();
-            explosion.SetPower(explosionPower);
+    private void Explode()
+    {
+        if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, explosionOrigin.rotation);
+
+        GameObject explosionObject = new GameObject();
+        explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, explosionOrigin.rotation);
+        Explosion explosion = explosionObject.AddComponent<Explosion>();
+        explosion.SetPower(explosionPower);
             
-            Destroy(gameObject);
-        };
+        Destroy(gameObject);
+        
+        ScoreTracker.Instance.AwardPoints(150, "explode", "Blow up " + GetComponent<NameHaver>().Name);
     }
 }
