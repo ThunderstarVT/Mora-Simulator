@@ -487,7 +487,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -865,7 +865,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -958,7 +958,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -982,7 +982,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1006,7 +1006,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1099,7 +1099,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1192,7 +1192,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1285,7 +1285,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1378,7 +1378,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1471,7 +1471,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1564,7 +1564,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1657,7 +1657,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1755,7 +1755,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1915,7 +1915,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -2008,7 +2008,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -2101,7 +2101,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -2125,7 +2125,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -2149,7 +2149,7 @@ SpringJoint:
   m_Spring: 100000
   m_Damper: 500
   m_MinDistance: 0
-  m_MaxDistance: 0
+  m_MaxDistance: 0.1
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity

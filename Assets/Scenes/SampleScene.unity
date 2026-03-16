@@ -1234,7 +1234,7 @@ MonoBehaviour:
   ragdoll: {fileID: 199138966}
   kickOrigin: {fileID: 337416702}
   kickRadius: 0.8
-  kickImpulse: 1000
+  kickImpulse: 100
   kickUpwardsModifier: 0.2
   fireOrigin: {fileID: 1816548203}
   fireDistance: 1.5
@@ -7515,7 +7515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245778112898752228, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -591.4998
+      value: -591.4999
       objectReference: {fileID: 0}
     - target: {fileID: 7282913729619442663, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y

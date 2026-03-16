@@ -167,8 +167,8 @@ public class PlayerActions : MonoBehaviour
             ScoreTracker.Instance.AwardPoints(50, playerMovement.IsGrounded ? "kick" : "air_kick", (playerMovement.IsGrounded ? "Kick " : "Air kick ") + objectName);
             
             first.OnKickedEventInvoke(kickImpulse);
-            first.AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse, 
-                kickOrigin.position);
+            first.AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse 
+                * (float)Math.Sqrt(first.rb.mass), kickOrigin.position);
         }
     }
 
