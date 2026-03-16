@@ -129,6 +129,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI breatheFireBind_Text;
     [SerializeField] private TextMeshProUGUI screamBind_Text;
     [SerializeField] private TextMeshProUGUI ragdollBind_Text;
+    
+    [Header("Unsaved Changes Confirmation Stuff")]
+    [SerializeField] private Canvas unsavedChangesConfirmationCanvas;
 
     [Serializable]
     private struct Level
@@ -149,6 +152,8 @@ public class MenuManager : MonoBehaviour
 
     private void Init()
     {
+        unsavedChangesConfirmationCanvas.enabled = false;
+        
         // start on title screen
         SetCurrentMenu(CurrentMenu.TITLE_SCREEN);
         
@@ -189,7 +194,7 @@ public class MenuManager : MonoBehaviour
     {
         if (currentTab == MenuTab.OPTIONS && SettingsManager.Instance.UnsavedChanges)
         {
-            // TODO: show warning thingy
+            unsavedChangesConfirmationCanvas.enabled = true;
             
             return false;
         }
@@ -226,7 +231,7 @@ public class MenuManager : MonoBehaviour
     {
         if (currentTab == MenuTab.OPTIONS && SettingsManager.Instance.UnsavedChanges)
         {
-            // TODO: show warning thingy
+            unsavedChangesConfirmationCanvas.enabled = true;
             
             return false;
         }
@@ -583,6 +588,12 @@ public class MenuManager : MonoBehaviour
         };
         
         UpdateOptionsText();
+    }
+
+
+    public void UnsavedChanges_Confirm()
+    {
+        unsavedChangesConfirmationCanvas.enabled = false;
     }
     
     
