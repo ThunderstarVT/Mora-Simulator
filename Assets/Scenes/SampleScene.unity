@@ -161,7 +161,7 @@ MonoBehaviour:
   flammable: {fileID: 22653610}
   explosionOrigin: {fileID: 22653618}
   explosionPower: 250
-  particlePrefab: {fileID: 0}
+  particlePrefab: {fileID: 1944679282033802971, guid: 57811bd1d7ae03f46b4eb614be0c66d8, type: 3}
 --- !u!114 &22653610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   flammable: {fileID: 447006545}
   explosionOrigin: {fileID: 447006544}
   explosionPower: 250
-  particlePrefab: {fileID: 0}
+  particlePrefab: {fileID: 1944679282033802971, guid: 57811bd1d7ae03f46b4eb614be0c66d8, type: 3}
 --- !u!114 &447006537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7515,7 +7515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245778112898752228, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -591.4999
+      value: -590.82574
       objectReference: {fileID: 0}
     - target: {fileID: 7282913729619442663, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9817,7 +9817,7 @@ MonoBehaviour:
   flammable: {fileID: 2040300786}
   explosionOrigin: {fileID: 2040300794}
   explosionPower: 250
-  particlePrefab: {fileID: 0}
+  particlePrefab: {fileID: 1944679282033802971, guid: 57811bd1d7ae03f46b4eb614be0c66d8, type: 3}
 --- !u!114 &2040300786
 MonoBehaviour:
   m_ObjectHideFlags: 0
