@@ -191,6 +191,8 @@ public class Ragdoll : PhysicsObject
         rb.isKinematic = false;
         rb.useGravity = true;
         
+        Vector3 forward = Vector3.ProjectOnPlane(bones.Aggregate(Vector3.zero, (v, b) => v + b.transform.forward), Vector3.up).normalized;
+        
         colliders.ForEach(c => c.enabled = true);
 
         foreach (RagdollBone bone in bones)
@@ -204,6 +206,7 @@ public class Ragdoll : PhysicsObject
         anim.enabled = true;
 
         transform.position = GetCenter();
+        transform.forward = forward;
         root.position = Vector3.zero;
     }
 
