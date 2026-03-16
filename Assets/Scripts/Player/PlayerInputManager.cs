@@ -6,6 +6,8 @@ public class PlayerInputManager : MonoBehaviour
 {
     private InputSystem_Actions inputActions;
 
+    public bool SprintKeyHeld => inputActions.Player.sprint.IsPressed();
+
     private void Awake()
     {
         inputActions = new InputSystem_Actions();

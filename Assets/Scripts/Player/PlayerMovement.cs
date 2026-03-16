@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundCheckOffset = 0.2f;
     
     private Vector2 inputDirection;
+    private Vector2 oldInputDirection;
     
     private bool sprinting;
 
@@ -83,6 +84,13 @@ public class PlayerMovement : MonoBehaviour
         {
             sprinting = inputDirection.sqrMagnitude > 0.05f;
         }
+        
+        if (oldInputDirection.sqrMagnitude <= 0.05f && inputDirection.sqrMagnitude > 0.05f)
+        {
+            sprinting = inputManager.SprintKeyHeld;
+        }
+        
+        oldInputDirection = inputDirection;
         
         if (ragdoll.isRagdolling) // ragdoll movement
         {
