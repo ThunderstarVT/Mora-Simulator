@@ -166,7 +166,7 @@ public class PlayerActions : MonoBehaviour
             string objectName = first.GetComponent<NameHaver>()?.Name;
             ScoreTracker.Instance.AwardPoints(50, playerMovement.IsGrounded ? "kick" : "air_kick", (playerMovement.IsGrounded ? "Kick " : "Air kick ") + objectName);
             
-            first.OnKickedEventInvoke(kickImpulse);
+            first.OnKickedEventInvoke(kickImpulse * (float)Math.Sqrt(first.rb.mass));
             first.AddImpulseAtPoint((kickOrigin.forward + Vector3.up * kickUpwardsModifier).normalized * kickImpulse 
                 * (float)Math.Sqrt(first.rb.mass), kickOrigin.position);
         }
