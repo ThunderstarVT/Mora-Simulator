@@ -11,6 +11,8 @@ public class ExplosiveCanister : MonoBehaviour
     [SerializeField] private float explosionPower;
     [SerializeField] private GameObject particlePrefab;
     
+    private bool exploded = false;
+    
     void Start()
     {
         destructibleObject.OnBreakEvent += Explode;
@@ -20,15 +22,20 @@ public class ExplosiveCanister : MonoBehaviour
 
     private void Explode()
     {
-        if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, explosionOrigin.rotation);
+        if (!exploded)
+        {
+            if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, explosionOrigin.rotation);
 
-        GameObject explosionObject = new GameObject();
-        explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, explosionOrigin.rotation);
-        Explosion explosion = explosionObject.AddComponent<Explosion>();
-        explosion.SetPower(explosionPower);
+            GameObject explosionObject = new GameObject();
+            explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, explosionOrigin.rotation);
+            Explosion explosion = explosionObject.AddComponent<Explosion>();
+            explosion.SetPower(explosionPower);
             
-        Destroy(gameObject);
+            Destroy(gameObject);
         
-        ScoreTracker.Instance.AwardPoints(150, "explode", "Blow up " + GetComponent<NameHaver>().Name);
+            ScoreTracker.Instance.AwardPoints(150, "explode", "Blow up " + GetComponent<NameHaver>().Name);
+        
+            exploded = true;
+        }
     }
 }
