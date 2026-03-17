@@ -877,6 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4382761560810659455}
   - component: {fileID: 6222243134645371331}
+  - component: {fileID: 8894651629540273204}
   m_Layer: 0
   m_Name: '[Score Tracker]'
   m_TagString: Untagged
@@ -929,6 +930,43 @@ MonoBehaviour:
   scorePopupVelocityNoise: {x: 10, y: 10}
   scorePopupPositionNoise: {x: 50, y: 0}
   score: 0
+--- !u!114 &8894651629540273204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753269614763389259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e3f9d38fe790246a38a554c3f018d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholds:
+  - score: 1337
+    setName: Score1
+    achievementIndex: 0
+  - score: 9001
+    setName: Score1
+    achievementIndex: 1
+  - score: 42069
+    setName: Score1
+    achievementIndex: 2
+  - score: 69420
+    setName: Score1
+    achievementIndex: 3
+  - score: 420420
+    setName: Score1
+    achievementIndex: 4
+  - score: 800813
+    setName: Score1
+    achievementIndex: 5
+  - score: 6942069
+    setName: Score1
+    achievementIndex: 6
+  - score: -1
+    setName: Score1
+    achievementIndex: 7
 --- !u!1 &4794917320562862226
 GameObject:
   m_ObjectHideFlags: 0

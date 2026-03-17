@@ -54,8 +54,6 @@ public class ParticleEmissionModifier : MonoBehaviour
                 curve.constant = particleSystemEmissionBursts[p][i].Item3 * SettingsManager.Instance.ParticleRateModifier;
                 burst.count = curve;
                 emission.SetBurst(i, burst);
-                
-                Debug.Log(emission.GetBurst(i).count.constantMax);
             }
             
             if (wasPlaying) p.Play();
