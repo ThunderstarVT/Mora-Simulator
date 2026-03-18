@@ -46,14 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementSets:
   - name: Score1
-    description1: Leet Skills
-    description2: IT'S OVER 9000!
-    description3: Nice Nice
-    description4: Double Nice
-    description5: Blazing It
-    description6: Calculator Master
-    description7: "Nice\xB2"
-    description8: Integer Overflow
+    description1: Leet Skills (Score 1337)
+    description2: IT'S OVER 9000! (Score 9001)
+    description3: Nice Nice (Score 42069)
+    description4: Double Nice (Score 69420)
+    description5: Blazing It (Score 420420)
+    description6: Calculator Master (Score 800813)
+    description7: "Nice\xB2 (Score 6942069)"
+    description8: Integer Overflow (Score ???)
     icon1: {fileID: 0}
     icon2: {fileID: 0}
     icon3: {fileID: 0}

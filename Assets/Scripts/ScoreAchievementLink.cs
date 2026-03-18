@@ -16,7 +16,7 @@ public class ScoreAchievementLink : MonoBehaviour
 
         scoreTracker.OnScoreChanged += (_score, _toAdd, _added) =>
         {
-            foreach (ScoreThreshold threshold in thresholds.Where(threshold => _score >= threshold.score || (_score < 0 && threshold.score == -1)))
+            foreach (ScoreThreshold threshold in thresholds.Where(threshold => (_score >= threshold.score && threshold.score != -1) || (_score < 0 && threshold.score == -1)))
             {
                 AchievementTracker.Instance.AwardAchievement(threshold.setName, threshold.achievementIndex);
             }

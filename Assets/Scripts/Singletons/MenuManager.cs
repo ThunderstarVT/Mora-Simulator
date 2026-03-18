@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Singletons;
 using TMPro;
 using UnityEngine;
@@ -88,6 +89,10 @@ public class MenuManager : MonoBehaviour
     private int levelScene_SelectedIndex;
     private Level levelScene_Selected => levelScenes[levelScene_SelectedIndex];
     public event Action<int> OnLevelSceneSelectedChange;
+    
+    [Header("Achievements")]
+    [SerializeField] private RectTransform achievementSetParent;
+    [SerializeField] private GameObject achievementSetPrefab;
     
     [Header("Options Tab Requirements")]
     [SerializeField] private TextMeshProUGUI mouseSenseX_Text;
@@ -252,6 +257,22 @@ public class MenuManager : MonoBehaviour
                 break;
             case MenuTab.KEY_BINDINGS:
                 UpdateBindingsText();
+                break;
+            case MenuTab.ACHIEVEMENTS:
+                foreach (Transform child in achievementSetParent)
+                {
+                    Destroy(child.gameObject);
+                }
+                
+                Instantiate(achievementSetPrefab, achievementSetParent)
+                    .GetComponent<AchievementSetLoader>()
+                    .Load(null);
+                foreach (AchievementTracker.AchievementSet achievementSet in AchievementTracker.Instance.AchievementSets.AsEnumerable().Reverse())
+                {
+                    Instantiate(achievementSetPrefab, achievementSetParent)
+                        .GetComponent<AchievementSetLoader>()
+                        .Load(achievementSet);
+                }
                 break;
         }
 
