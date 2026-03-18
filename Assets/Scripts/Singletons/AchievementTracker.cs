@@ -85,9 +85,7 @@ public class AchievementTracker : MonoBehaviour
 
         public void Load()
         {
-            awarded = PlayerPrefs.HasKey("AchievementSet_" + name) ? PlayerPrefs.GetInt("AchievementSet_" + name) : 0;
-            
-            Debug.Log(awarded);
+            awarded = PlayerPrefs.GetInt("AchievementSet_" + name);
         }
 
         public void Award(int index)
