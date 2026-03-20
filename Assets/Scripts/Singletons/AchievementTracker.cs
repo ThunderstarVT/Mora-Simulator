@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class AchievementTracker : MonoBehaviour
@@ -15,6 +17,13 @@ public class AchievementTracker : MonoBehaviour
             return instance;
         }
     }
+    
+    private Queue<string> achievementPopupQueue = new();
+    
+    [SerializeField] private float popupDuration = 5f;
+    [SerializeField] private TextMeshProUGUI popupTextMesh;
+    
+    private Coroutine popupCoroutine;
 
     private void Awake()
     {
@@ -33,6 +42,37 @@ public class AchievementTracker : MonoBehaviour
     private void Start()
     {
         achievementSets.ForEach(a => a.Load());
+        
+        if (popupCoroutine == null) StartCoroutine(PopupCoroutine());
+    }
+
+
+    private IEnumerator PopupCoroutine()
+    {
+        popupTextMesh.alpha = 0f;
+        
+        while (true)
+        {
+            yield return new WaitUntil(() => achievementPopupQueue.Count > 0);
+            string popupText = achievementPopupQueue.Dequeue();
+            
+            popupTextMesh.text = popupText;
+            
+            float timer = popupDuration;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+
+                popupTextMesh.alpha = Mathf.Sqrt(Mathf.Clamp01(timer / popupDuration));
+                
+                yield return null;
+            }
+        }
+    }
+
+    public void QueuePopup(string popupText)
+    {
+        achievementPopupQueue.Enqueue(popupText);
     }
 
 
@@ -95,8 +135,8 @@ public class AchievementTracker : MonoBehaviour
             if ((awarded & (1 << index)) != 0) return; // if already awarded, return
             
             awarded |= 1 << index;
-            
-            // add popup to queue
+
+            Instance.QueuePopup(this[index].Item1);
             
             PlayerPrefs.SetInt("AchievementSet_" + name, awarded);
             PlayerPrefs.Save();
