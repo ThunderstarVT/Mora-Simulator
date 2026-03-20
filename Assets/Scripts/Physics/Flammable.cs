@@ -102,8 +102,10 @@ public class Flammable : MonoBehaviour
 
     private static float ColliderDistance(Collider c1, Collider c2)
     {
+        if (!c1.enabled || !c2.enabled) return float.PositiveInfinity;
+
         return Vector3.Distance(
-                c1.ClosestPoint(c2.ClosestPoint(c1.bounds.center)), 
-                c2.ClosestPoint(c1.ClosestPoint(c2.bounds.center)));
+            c1.ClosestPoint(c2.ClosestPoint(c1.bounds.center)),
+            c2.ClosestPoint(c1.ClosestPoint(c2.bounds.center)));
     }
 }

@@ -606,6 +606,7 @@ MonoBehaviour:
   burnTicks: 60
   spreadRange: 1
   colliders:
+  - {fileID: 6697648646319636908}
   - {fileID: 7150660566101937622}
   - {fileID: 9123180935316738428}
   - {fileID: 3444846159269647471}
