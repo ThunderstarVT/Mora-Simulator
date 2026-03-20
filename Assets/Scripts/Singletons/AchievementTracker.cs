@@ -35,7 +35,7 @@ public class AchievementTracker : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
