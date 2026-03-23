@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 vel = transform.InverseTransformDirection(
                 Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0)
                 * new Vector3(inputDirection.x, 0, inputDirection.y) 
-                * (sprinting && IsGrounded && inputDirection.y > Mathf.Abs(inputDirection.x) ? 2 : 1));
+                * (sprinting && IsGrounded && inputDirection.y > 0.9f * Mathf.Abs(inputDirection.x) ? 2 : 1));
             
             return new Vector2(vel.x, vel.z);
         }
