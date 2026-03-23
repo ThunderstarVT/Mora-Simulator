@@ -44,5 +44,5 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool(Grounded, playerMovement.IsGrounded);
         
         animator.SetBool(BreathingFire, playerActions.BreathingFire);
-    }
+    }   
 }
