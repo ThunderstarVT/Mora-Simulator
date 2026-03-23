@@ -207,7 +207,7 @@ public class Ragdoll : PhysicsObject
 
         transform.position = GetCenter();
         transform.forward = forward;
-        root.position = Vector3.zero;
+        root.localPosition = Vector3.zero;
     }
 
 
