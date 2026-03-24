@@ -19,5 +19,7 @@ public class NuclearTaco : MonoBehaviour, IEdible
         Destroy(gameObject);
         
         ScoreTracker.Instance.AwardPoints(1000, "nuclear_taco", "Eat " + GetComponent<NameHaver>().Name);
+        
+        //TODO: nuclear taco achievement
     }
 }
