@@ -122,6 +122,13 @@ public class PlayerActions : MonoBehaviour
                 Mathf.Log10(kickImpulse + 1f), EventType.Repaint);
 #endif
         }
+
+        if (eatOrigin)
+        {
+            Gizmos.color = Color.yellow;
+            
+            Gizmos.DrawWireSphere(eatOrigin.position, eatRadius);
+        }
     }
 
 

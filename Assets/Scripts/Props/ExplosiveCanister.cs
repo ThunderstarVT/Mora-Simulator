@@ -24,10 +24,10 @@ public class ExplosiveCanister : MonoBehaviour
     {
         if (!exploded)
         {
-            if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, explosionOrigin.rotation);
+            if (particlePrefab) Instantiate(particlePrefab, explosionOrigin.position, Quaternion.Euler(Vector3.zero));
 
             GameObject explosionObject = new GameObject();
-            explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, explosionOrigin.rotation);
+            explosionObject.transform.SetPositionAndRotation(explosionOrigin.position, Quaternion.Euler(Vector3.zero));
             Explosion explosion = explosionObject.AddComponent<Explosion>();
             explosion.SetPower(explosionPower);
             

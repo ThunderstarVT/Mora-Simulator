@@ -201,6 +201,8 @@ public class Ragdoll : PhysicsObject
             bone.RB.useGravity = false;
             
             bone.Collider.enabled = false;
+            
+            bone.transform.localPosition = Vector3.zero;
         }
             
         anim.enabled = true;
