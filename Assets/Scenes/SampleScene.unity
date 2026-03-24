@@ -9453,6 +9453,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &846066857667531719
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7580261459210009005, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_Name
+      value: Trophy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771235447921023985, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2808d1f430981943bef8d3cd5f76f4e, type: 3}
 --- !u!1001 &3425914922138192437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9837,15 +9894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5019568509673364464, guid: f666b1c79c9b05847851ba4a0ec972ff, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Hips'\n\tTransform 'Calf.L'\n\tTransform
-        'Trocantur.L'\n\tTransform 'Wrist.L'\n\tTransform 'Ankle.R'\n\tTransform
-        'ThumbRoot.L'\n\tTransform 'Neck'\n\tTransform 'Calf.R'\n\tTransform 'Thigh.R'\n\tTransform
-        'Lumbar'\n\tand more ...\n\tFrom animation clip 'Armature_RunCycle'\n\tFrom
-        animation clip 'Armature_RunStrafeLeft'\n\tFrom animation clip 'Armature_RunStrafeRight'\n\tFrom
-        animation clip 'Armature_WalkCycle'\n\tFrom animation clip 'Armature_WalkCycleBack'\n\tFrom
-        animation clip 'Armature_WalkStrafeLeft'\n\tFrom animation clip 'Armature_WalkStrafeRight'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5079002306556492160, guid: f666b1c79c9b05847851ba4a0ec972ff, type: 3}
       propertyPath: m_UseGravity
@@ -10037,6 +10086,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].name
+      value: Trophy1
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description1
+      value: 4 trophies
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description2
+      value: 8 trophies
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description3
+      value: 16 trophies
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description4
+      value: 32 trophies
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description6
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description7
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
+      propertyPath: achievementSets.Array.data[1].description8
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5319053951852488447, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10119,3 +10208,4 @@ SceneRoots:
   - {fileID: 1800081800}
   - {fileID: 1842501873}
   - {fileID: 204577815}
+  - {fileID: 846066857667531719}

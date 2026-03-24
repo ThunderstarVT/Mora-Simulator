@@ -173,21 +173,6 @@ public class MenuManager : MonoBehaviour
         // set input stuff
         inputActions.UI.AnyKey.canceled += OnAnyKeyPressed;
         inputActions.UI.Pause.canceled += OnPause;
-
-        for (int i = 0; i < levelScenes.Count; i++)
-        {
-            GameObject go = Instantiate(levelScenePrefab, levelSceneParent);
-            LevelListEntry entry = go.GetComponent<LevelListEntry>();
-            int index = i;
-
-            entry.SetText(levelScenes[i].displayName);
-            entry.SetButtonOnClick(() => SetLevelSceneSelected(index));
-
-            OnLevelSceneSelectedChange += lsi =>
-            {
-                entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
-            };
-        }
         
         SetLevelSceneSelected(levelScenes.FindIndex(level => 
             SceneManager.GetActiveScene().name.Equals(level.sceneName)));
@@ -251,6 +236,37 @@ public class MenuManager : MonoBehaviour
 
         switch (tab)
         {
+            case MenuTab.PLAY:
+                foreach (Transform child in levelSceneParent)
+                {
+                    Destroy(child.gameObject);
+                }
+                
+                for (int i = 0; i < levelScenes.Count; i++)
+                {
+                    GameObject go = Instantiate(levelScenePrefab, levelSceneParent);
+                    LevelListEntry entry = go.GetComponent<LevelListEntry>();
+                    int index = i;
+                    
+                    int trophyPref = PlayerPrefs.GetInt("Trophy_" + levelScenes[i].sceneName);
+        
+                    int collected = 0;
+                    while (trophyPref != 0)
+                    {
+                        if ((trophyPref & 1) == 1) collected++;
+                        trophyPref >>= 1;
+                    }
+
+                    entry.SetText(levelScenes[i].displayName + " (" + collected + "/32)");
+                    entry.SetButtonOnClick(() => SetLevelSceneSelected(index));
+
+                    OnLevelSceneSelectedChange += lsi =>
+                    {
+                        entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
+                    };
+                }
+                
+                break;
             case MenuTab.OPTIONS:
                 UpdateOptionsText();
                 UpdateOptionsSettings();
