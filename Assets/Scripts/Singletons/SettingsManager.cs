@@ -130,6 +130,9 @@ namespace Singletons
             buoyancyAccuracy = buoyancyAccuracy_old = Options.MID;
             particleCount = particleCount_old = Options.MID;
             
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+            
             OnApply?.Invoke();
         }
 
