@@ -20,10 +20,12 @@ public class PlayerActions : MonoBehaviour
     [Header("Kick Settings")] 
     [SerializeField] private Transform kickOrigin;
     [SerializeField, Min(0f)] private float kickRadius = 0.8f;
-    [SerializeField, Min(0f)] private float kickImpulse = 1000f;
+    [SerializeField, Min(0f)] private float kickImpulse = 100f;
     [SerializeField] private float kickUpwardsModifier = 0.2f;
     
     [Header("Eat Settings")] 
+    [SerializeField] private Transform eatOrigin;
+    [SerializeField, Min(0f)] private float eatRadius = 0.8f;
     
     [Header("Fire Breath Settings")] 
     [SerializeField] private Transform fireOrigin;
@@ -180,6 +182,19 @@ public class PlayerActions : MonoBehaviour
             
             //TODO: eat edible object in sphere that is closest to center
             // will be added when edible object gets added
+
+            Collider[] colliders = Physics.OverlapSphere(eatOrigin.position, eatRadius, 
+                Physics.AllLayers, QueryTriggerInteraction.Collide);
+
+            foreach (Collider col in colliders.OrderBy(col => Vector3.Distance(eatOrigin.position, col.bounds.center)))
+            {
+                IEdible edible = col.GetComponent<IEdible>();
+
+                if (edible == null) continue;
+                
+                edible.Eat();
+                return;
+            }
         }
     }
 
