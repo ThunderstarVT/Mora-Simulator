@@ -11,11 +11,19 @@ public class Trophy : MonoBehaviour
 
     [SerializeField, Range(0, 7)]
     private int fourAchievement, eightAchievement, sixteenAchievement, thirtyTwoAchievement;
+    
+    [Space]
+    [SerializeField] private float spinSpeed;
 
 
     private void Start()
     {
         if ((PlayerPrefs.GetInt("Trophy_" + SceneManager.GetActiveScene().name) & (1 << id)) != 0) Destroy(gameObject);
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(Vector3.up, spinSpeed * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

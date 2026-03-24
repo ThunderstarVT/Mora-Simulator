@@ -127,3 +127,4 @@ MonoBehaviour:
   eightAchievement: 1
   sixteenAchievement: 2
   thirtyTwoAchievement: 3
+  spinSpeed: 45
