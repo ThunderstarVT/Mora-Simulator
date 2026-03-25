@@ -843,6 +843,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1310237844132155215, guid: 4c137f74e210548488c15e970176e2ab, type: 3}
+      propertyPath: behavior
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1676628268728823656, guid: 4c137f74e210548488c15e970176e2ab, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -1489,7 +1493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionOrigin: {fileID: 462693182}
-  explosionPower: 1000000
+  explosionPower: 100000
   particlePrefab: {fileID: 0}
 --- !u!114 &462693178
 MonoBehaviour:

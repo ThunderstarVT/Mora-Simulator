@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
 
     [Space]
-    [SerializeField, Min(0f)] private float walkSpeed = 1.5f;
-    [SerializeField, Min(0f)] private float sprintSpeed = 10f;
+    [SerializeField, Min(0f)] private float walkSpeed = 3f;
+    [SerializeField, Min(0f)] private float sprintSpeed = 8f;
 
     [SerializeField, Min(0f)] private float groundedVelocitySmoothing = 10f;
     [SerializeField, Min(0f)] private float airborneVelocitySmoothing = 0.2f;

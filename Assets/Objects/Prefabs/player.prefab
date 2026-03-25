@@ -1133,8 +1133,8 @@ MonoBehaviour:
   inputManager: {fileID: 8476992564690122644}
   ragdoll: {fileID: 6053798338103137349}
   rb: {fileID: 3439824268021805126}
-  walkSpeed: 1.5
-  sprintSpeed: 10
+  walkSpeed: 3
+  sprintSpeed: 8
   groundedVelocitySmoothing: 10
   airborneVelocitySmoothing: 0.2
   turnSpeed: 5

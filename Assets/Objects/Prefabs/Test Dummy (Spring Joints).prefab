@@ -660,6 +660,17 @@ MonoBehaviour:
   nameHaver: {fileID: -2506982032070684642}
   npcNames:
   - Test Dummy
+  behavior: 0
+  movementUpdateTime: 2
+  unragdollTime: 5
+  walkSpeed: 2.5
+  sprintSpeed: 5
+  groundedVelocitySmoothing: 10
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckRadius: 0.25
+  groundCheckOffset: 0.2
 --- !u!1 &872905935225407824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8583992136507829436, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
