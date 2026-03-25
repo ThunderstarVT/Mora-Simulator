@@ -133,6 +133,8 @@ namespace Singletons
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
             
+            AchievementTracker.Instance.AchievementSets.ForEach(set => set.Load());
+            
             OnApply?.Invoke();
         }
 
