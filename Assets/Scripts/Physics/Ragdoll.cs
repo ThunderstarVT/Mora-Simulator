@@ -21,6 +21,8 @@ public class Ragdoll : PhysicsObject
     [SerializeField] private List<RagdollBone> bones;
     public List<RagdollBone> Bones => bones;
     
+    private Dictionary<RagdollBone, (Vector3, Quaternion)> initialBonePoses = new();
+    
     [Space]
     [SerializeField, Min(0f)] private float impulseThreshold = 20f;
     [SerializeField, Min(0f)] private float explosionThreshold = 2.5f;
@@ -34,6 +36,8 @@ public class Ragdoll : PhysicsObject
         foreach (RagdollBone bone in bones)
         {
             bone.OnCollisionEnterEvent += OnCollisionEnter;
+            
+            initialBonePoses[bone] = (bone.transform.localPosition, bone.transform.localRotation);
         }
         
         rb.mass = bones.Sum(b => b.RB.mass);
@@ -201,8 +205,11 @@ public class Ragdoll : PhysicsObject
             bone.RB.useGravity = false;
             
             bone.Collider.enabled = false;
-            
-            bone.transform.localPosition = Vector3.zero;
+
+            if (initialBonePoses.ContainsKey(bone))
+            {
+                bone.transform.SetLocalPositionAndRotation(initialBonePoses[bone].Item1, initialBonePoses[bone].Item2);
+            }
         }
             
         anim.enabled = true;

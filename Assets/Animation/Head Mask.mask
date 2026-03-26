@@ -33,21 +33,31 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/IndexRoot.L/IndexBone.L
     m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/IndexRoot.L/IndexBone.L/IndexBone.L_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/MiddleRoot.L
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/MiddleRoot.L/MiddleBone.L
+    m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/MiddleRoot.L/MiddleBone.L/MiddleBone.L_end
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/PinkyRoot.L
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/PinkyRoot.L/PinkyBone.L
     m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/PinkyRoot.L/PinkyBone.L/PinkyBone.L_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/RingRoot.L
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/RingRoot.L/RingBone.L
     m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/RingRoot.L/RingBone.L/RingBone.L_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/ThumbRoot.L
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/ThumbRoot.L/ThumbBone.L
+    m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.L/UpperArm.L/Forearm.L/Wrist.L/ThumbRoot.L/ThumbBone.L/ThumbBone.L_end
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R
     m_Weight: 1
@@ -61,27 +71,39 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/IndexRoot.R/IndexBone.R
     m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/IndexRoot.R/IndexBone.R/IndexBone.R_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/MiddleRoot.R
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/MiddleRoot.R/MiddleBone.R
+    m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/MiddleRoot.R/MiddleBone.R/MiddleBone.R_end
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/PinkyRoot.R
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/PinkyRoot.R/PinkyBone.R
     m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/PinkyRoot.R/PinkyBone.R/PinkyBone.R_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/RingRoot.R
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/RingRoot.R/RingBone.R
     m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/RingRoot.R/RingBone.R/RingBone.R_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/ThumbRoot.R
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/ThumbRoot.R/ThumbBone.R
+    m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/CollarBone.R/UpperArm.R/Forearm.R/Wrist.R/ThumbRoot.R/ThumbBone.R/ThumbBone.R_end
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/Neck
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/Neck/Head
     m_Weight: 1
   - m_Path: Armature/Hips/Lumbar/Sternum/Neck/Head/Eyebrow
+    m_Weight: 1
+  - m_Path: Armature/Hips/Lumbar/Sternum/Neck/Head/Eyebrow/Eyebrow_end
     m_Weight: 1
   - m_Path: Armature/Hips/TailRoot
     m_Weight: 1
@@ -95,6 +117,8 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/Hips/TailRoot/Tail.1/Tail.2/Tail.3/Tail.4/Tail.5
     m_Weight: 1
+  - m_Path: Armature/Hips/TailRoot/Tail.1/Tail.2/Tail.3/Tail.4/Tail.5/Tail.5_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Trocantur.L
     m_Weight: 1
   - m_Path: Armature/Hips/Trocantur.L/Thigh.L
@@ -103,6 +127,8 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/Hips/Trocantur.L/Thigh.L/Calf.L/Ankle.L
     m_Weight: 1
+  - m_Path: Armature/Hips/Trocantur.L/Thigh.L/Calf.L/Ankle.L/Ankle.L_end
+    m_Weight: 1
   - m_Path: Armature/Hips/Trocantur.R
     m_Weight: 1
   - m_Path: Armature/Hips/Trocantur.R/Thigh.R
@@ -110,6 +136,8 @@ AvatarMask:
   - m_Path: Armature/Hips/Trocantur.R/Thigh.R/Calf.R
     m_Weight: 1
   - m_Path: Armature/Hips/Trocantur.R/Thigh.R/Calf.R/Ankle.R
+    m_Weight: 1
+  - m_Path: Armature/Hips/Trocantur.R/Thigh.R/Calf.R/Ankle.R/Ankle.R_end
     m_Weight: 1
   - m_Path: BackHair
     m_Weight: 1
