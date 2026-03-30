@@ -25163,6 +25163,11 @@ MonoBehaviour:
   - displayName: Test Map
     sceneName: SampleScene
     description: A test scene made for use during development only.
+    levelType: 0
+  - displayName: The Backrooms
+    sceneName: TheBackrooms
+    description: 
+    levelType: 2
   levelSceneParent: {fileID: 4582901689553735826}
   levelScenePrefab: {fileID: 5422901048676562012, guid: 1d3febf0f6a2e2e4c85494e6485b3ff0, type: 3}
   levelSceneDescription: {fileID: 824801844828063406}

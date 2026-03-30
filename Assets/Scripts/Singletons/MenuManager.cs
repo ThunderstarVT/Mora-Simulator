@@ -142,9 +142,17 @@ public class MenuManager : MonoBehaviour
     [Serializable]
     private struct Level
     {
+        public enum LevelType
+        {
+            DEFAULT,
+            NO_TROPHY,
+            BACKROOMS
+        }
+        
         [SerializeField] public string displayName;
         [SerializeField] public string sceneName;
         [SerializeField, TextArea] public string description;
+        [SerializeField] public LevelType levelType;
     }
     
     private CameraController cameraController => Camera.main?.GetComponent<CameraController>();
@@ -239,6 +247,8 @@ public class MenuManager : MonoBehaviour
         switch (tab)
         {
             case MenuTab.PLAY:
+                OnLevelSceneSelectedChange = null;
+                
                 foreach (Transform child in levelSceneParent)
                 {
                     Destroy(child.gameObject);
@@ -246,26 +256,67 @@ public class MenuManager : MonoBehaviour
                 
                 for (int i = 0; i < levelScenes.Count; i++)
                 {
-                    GameObject go = Instantiate(levelScenePrefab, levelSceneParent);
-                    LevelListEntry entry = go.GetComponent<LevelListEntry>();
+                    GameObject go;
+                    LevelListEntry entry;
+                    
                     int index = i;
                     
-                    int trophyPref = PlayerPrefs.GetInt("Trophy_" + levelScenes[i].sceneName);
+                    switch (levelScenes[i].levelType)
+                    {
+                        case Level.LevelType.DEFAULT:
+                            go = Instantiate(levelScenePrefab, levelSceneParent);
+                            entry = go.GetComponent<LevelListEntry>();
+                    
+                            int trophyPref = PlayerPrefs.GetInt("Trophy_" + levelScenes[i].sceneName);
         
-                    int collected = 0;
-                    while (trophyPref != 0)
-                    {
-                        if ((trophyPref & 1) == 1) collected++;
-                        trophyPref >>= 1;
+                            int collected = 0;
+                            while (trophyPref != 0)
+                            {
+                                if ((trophyPref & 1) == 1) collected++;
+                                trophyPref >>= 1;
+                            }
+
+                            entry.SetText(levelScenes[i].displayName + " (" + collected + "/32)");
+                            entry.SetButtonOnClick(() => SetLevelSceneSelected(index));
+
+                            OnLevelSceneSelectedChange += lsi =>
+                            {
+                                entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
+                            };
+                            
+                            break;
+                        
+                        case Level.LevelType.NO_TROPHY:
+                            go = Instantiate(levelScenePrefab, levelSceneParent);
+                            entry = go.GetComponent<LevelListEntry>();
+                    
+                            entry.SetText(levelScenes[i].displayName);
+                            entry.SetButtonOnClick(() => SetLevelSceneSelected(index));
+
+                            OnLevelSceneSelectedChange += lsi =>
+                            {
+                                entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
+                            };
+                            
+                            break;
+                        
+                        case Level.LevelType.BACKROOMS:
+                            if (true) //TODO: if backrooms achievement got
+                            {
+                                go = Instantiate(levelScenePrefab, levelSceneParent);
+                                entry = go.GetComponent<LevelListEntry>();
+                    
+                                entry.SetText(levelScenes[i].displayName);
+                                entry.SetButtonOnClick(() => SetLevelSceneSelected(index));
+
+                                OnLevelSceneSelectedChange += lsi =>
+                                {
+                                    entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
+                                };
+                            }
+                            
+                            break;
                     }
-
-                    entry.SetText(levelScenes[i].displayName + " (" + collected + "/32)");
-                    entry.SetButtonOnClick(() => SetLevelSceneSelected(index));
-
-                    OnLevelSceneSelectedChange += lsi =>
-                    {
-                        entry.SetImageAlpha(lsi == index ? 1f : 0.5f);
-                    };
                 }
                 
                 break;
