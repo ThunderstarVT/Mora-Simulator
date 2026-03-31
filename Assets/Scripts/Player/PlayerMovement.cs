@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded => Physics.CheckSphere(
             ragdoll.isRagdolling ? ragdoll.GetCenter() : transform.position + Vector3.up * groundCheckOffset, 
-            groundCheckRadius, groundLayer);
+            groundCheckRadius, groundLayer, QueryTriggerInteraction.Ignore);
     
     public Vector2 AnimVelocity // velocity for use in the animator
     {

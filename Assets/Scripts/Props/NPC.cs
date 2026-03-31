@@ -38,7 +38,7 @@ public class NPC : MonoBehaviour
     
     public bool IsGrounded => Physics.CheckSphere(
         ragdoll.isRagdolling ? ragdoll.GetCenter() : transform.position + Vector3.up * groundCheckOffset, 
-        groundCheckRadius, groundLayer);
+        groundCheckRadius, groundLayer, QueryTriggerInteraction.Ignore);
         
     
     private enum NPCBehavior
