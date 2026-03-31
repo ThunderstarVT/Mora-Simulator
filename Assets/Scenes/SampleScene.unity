@@ -6211,6 +6211,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3658941185402226547, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: levelScenes.Array.data[1].description
+      value: THIS WILL BE AN EASTER EGG IN THE FINAL GAME
+      objectReference: {fileID: 0}
     - target: {fileID: 3681831128909299036, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_IsActive
       value: 1
