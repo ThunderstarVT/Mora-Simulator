@@ -89,6 +89,9 @@ public class MenuManager : MonoBehaviour
     private int levelScene_SelectedIndex;
     private Level levelScene_Selected => levelScenes[levelScene_SelectedIndex];
     public event Action<int> OnLevelSceneSelectedChange;
+    [Space]
+    [SerializeField] private string backroomsAchievementSet;
+    [SerializeField] private int backroomsAchievementIndex;
     
     [Header("Achievements")]
     [SerializeField] private RectTransform achievementSetParent;
@@ -301,7 +304,7 @@ public class MenuManager : MonoBehaviour
                             break;
                         
                         case Level.LevelType.BACKROOMS:
-                            if (true) //TODO: if backrooms achievement got
+                            if (AchievementTracker.Instance.HasAchievement(backroomsAchievementSet, backroomsAchievementIndex))
                             {
                                 go = Instantiate(levelScenePrefab, levelSceneParent);
                                 entry = go.GetComponent<LevelListEntry>();

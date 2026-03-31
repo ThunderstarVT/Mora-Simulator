@@ -84,6 +84,11 @@ public class AchievementTracker : MonoBehaviour
         }
     }
 
+    public bool HasAchievement(string set, int index)
+    {
+        return achievementSets.Where(a => a.name == set).Any(a => a[index].Item3);
+    }
+
 
     [SerializeField] private List<AchievementSet> achievementSets;
     public List<AchievementSet> AchievementSets => achievementSets;

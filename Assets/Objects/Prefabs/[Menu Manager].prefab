@@ -25171,6 +25171,8 @@ MonoBehaviour:
   levelSceneParent: {fileID: 4582901689553735826}
   levelScenePrefab: {fileID: 5422901048676562012, guid: 1d3febf0f6a2e2e4c85494e6485b3ff0, type: 3}
   levelSceneDescription: {fileID: 824801844828063406}
+  backroomsAchievementSet: Egg1
+  backroomsAchievementIndex: 0
   achievementSetParent: {fileID: 7245778112898752228}
   achievementSetPrefab: {fileID: 4198049419422909961, guid: 7b700ef21f64cf5498ae2107167c62a5, type: 3}
   mouseSenseX_Text: {fileID: 3560896498670338357}
