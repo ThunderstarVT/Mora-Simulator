@@ -70,7 +70,9 @@ public class BackroomsGenerator : MonoBehaviour
         while (true)
         {
             Vector3 generationCentreVec3 = transform.InverseTransformPoint(generationOrigin.position) / tileSize;
-            (long, long) generationCentre = ((long)(generationCentreVec3.x + 0.5f), (long)(generationCentreVec3.z + 0.5f));
+            (long, long) generationCentre = (
+                (long)(generationCentreVec3.x + (generationCentreVec3.x < 0 ? -0.5f : 0.5f)), 
+                (long)(generationCentreVec3.z + (generationCentreVec3.z < 0 ? -0.5f : 0.5f)));
         
             for (long x = generationCentre.Item1 - generationDistance; x <= generationCentre.Item1 + generationDistance; x++)
             {
@@ -88,28 +90,54 @@ public class BackroomsGenerator : MonoBehaviour
                 if (pos.Item1 < generationCentre.Item1 - generationDistance || pos.Item1 > generationCentre.Item1 + generationDistance || 
                     pos.Item2 < generationCentre.Item2 - generationDistance || pos.Item2 > generationCentre.Item2 + generationDistance)
                 {
-                    tileGrid.Remove(pos.Item1, pos.Item2);
+                    if (!InLineOfSight(pos)) tileGrid.Remove(pos.Item1, pos.Item2);
                 }
             });
 
             while (toGenerate.Count > 0)
             {
-                List<(long, long)> lowestEntropy = GetLowestEntropy();
-                int index = Random.Range(0, lowestEntropy.Count);
-                (long, long) pos = lowestEntropy[index];
-            
-                List<(Tile, float)> validTiles = GetValidTiles(pos);
-
-                if (validTiles.Count == 0)
+                while (toGenerate.Count > 0)
                 {
+                    List<(long, long)> lowestEntropy = GetLowestEntropy();
+                    int index = Random.Range(0, lowestEntropy.Count);
+                    (long, long) pos = lowestEntropy[index];
+            
+                    List<(Tile, float)> validTiles = GetValidTiles(pos);
+
+                    if (validTiles.Count == 0)
+                    {
+                        toGenerate.Remove(pos);
+                        continue;
+                    }
+            
+                    Tile tile = RandomFromWeightedList(validTiles);
+            
+                    tileGrid[pos.Item1, pos.Item2] = tile;
                     toGenerate.Remove(pos);
-                    continue;
                 }
-            
-                Tile tile = RandomFromWeightedList(validTiles);
-            
-                tileGrid[pos.Item1, pos.Item2] = tile;
-                toGenerate.Remove(pos);
+                
+                tileGrid.ForEach((pos, tile) =>
+                {
+                    if (tile.tileObject.Second.Rotated(tile.rotation).north != -1 
+                        && !tileGrid.ContainsPoint(pos.Item1, pos.Item2 + 1) 
+                        && InLineOfSight((pos.Item1, pos.Item2 + 1)))
+                        toGenerate.Add((pos.Item1, pos.Item2 + 1));
+                    
+                    if (tile.tileObject.Second.Rotated(tile.rotation).east != -1 
+                        && !tileGrid.ContainsPoint(pos.Item1 + 1, pos.Item2) 
+                        && InLineOfSight((pos.Item1 + 1, pos.Item2)))
+                        toGenerate.Add((pos.Item1 + 1, pos.Item2));
+                    
+                    if (tile.tileObject.Second.Rotated(tile.rotation).south != -1 
+                        && !tileGrid.ContainsPoint(pos.Item1, pos.Item2 - 1) 
+                        && InLineOfSight((pos.Item1, pos.Item2 - 1)))
+                        toGenerate.Add((pos.Item1, pos.Item2 - 1));
+                    
+                    if (tile.tileObject.Second.Rotated(tile.rotation).west != -1 
+                        && !tileGrid.ContainsPoint(pos.Item1 - 1, pos.Item2) 
+                        && InLineOfSight((pos.Item1 - 1, pos.Item2)))
+                        toGenerate.Add((pos.Item1 - 1, pos.Item2));
+                });
             }
 
             yield return new WaitForSeconds(0.05f);
@@ -185,6 +213,12 @@ public class BackroomsGenerator : MonoBehaviour
         }
         
         return validTiles;
+    }
+
+    private bool InLineOfSight((long, long) pos)
+    {
+        //TODO: check line of sight
+        return false;
     }
     
     [Serializable]
