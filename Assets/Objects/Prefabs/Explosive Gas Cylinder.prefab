@@ -205,6 +205,8 @@ MonoBehaviour:
   explosionOrigin: {fileID: 9052417994839193477}
   explosionPower: 250
   particlePrefab: {fileID: 1944679282033802971, guid: 57811bd1d7ae03f46b4eb614be0c66d8, type: 3}
+  sfxPrefab: {fileID: 7568356029180655861, guid: c4743c6c19d868f48ac60b19792d7fce, type: 3}
+  positionOffset: {x: 0, y: 0.65, z: 0}
 --- !u!114 &4126612271185362470
 MonoBehaviour:
   m_ObjectHideFlags: 0
