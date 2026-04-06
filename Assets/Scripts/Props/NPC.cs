@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Ragdoll)), RequireComponent(typeof(Flammable)), RequireComponent(typeof(NameHaver))]
 public class NPC : MonoBehaviour
