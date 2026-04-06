@@ -5152,6 +5152,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 827075974287967996, guid: d7b33d57d22ebc14c855b87e01198845, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1896647709622089635}
+    - targetCorrespondingSourceObject: {fileID: 827075974287967996, guid: d7b33d57d22ebc14c855b87e01198845, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7185579768045129949}
+    - targetCorrespondingSourceObject: {fileID: 827075974287967996, guid: d7b33d57d22ebc14c855b87e01198845, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 11238578186882356}
     - targetCorrespondingSourceObject: {fileID: 6136432787989429695, guid: d7b33d57d22ebc14c855b87e01198845, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6899731590848389820}
@@ -5502,6 +5508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6325059823293211271}
   collider: {fileID: 1115966092624221901}
+  parent: {fileID: 0}
 --- !u!136 &1115966092624221901
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5668,6 +5675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6809041328025958602}
   collider: {fileID: 1036695300535982924}
+  parent: {fileID: 0}
 --- !u!136 &1036695300535982924
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5761,6 +5769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3945270513795547379}
   collider: {fileID: 749208860845075482}
+  parent: {fileID: 0}
 --- !u!136 &749208860845075482
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5859,6 +5868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2438365863677168962}
   collider: {fileID: 7394513272307353512}
+  parent: {fileID: 0}
 --- !u!136 &7394513272307353512
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5952,6 +5962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3113113299695235662}
   collider: {fileID: 1178527039883971294}
+  parent: {fileID: 0}
 --- !u!136 &1178527039883971294
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6045,6 +6056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6899731590848389820}
   collider: {fileID: 1015614231093835390}
+  parent: {fileID: 0}
 --- !u!136 &1015614231093835390
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6138,6 +6150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5789801824415347802}
   collider: {fileID: 6611542169127671828}
+  parent: {fileID: 0}
 --- !u!136 &6611542169127671828
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6231,6 +6244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3124059327833904837}
   collider: {fileID: 5971098521266737624}
+  parent: {fileID: 0}
 --- !u!136 &5971098521266737624
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6324,6 +6338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4915024373092078855}
   collider: {fileID: 4766120989841489639}
+  parent: {fileID: 0}
 --- !u!136 &4766120989841489639
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6393,6 +6408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3941879461799958550}
   collider: {fileID: 2177360336577272904}
+  parent: {fileID: 0}
 --- !u!136 &2177360336577272904
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6486,6 +6502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 331747155686354685}
   collider: {fileID: 6805581174905326768}
+  parent: {fileID: 0}
 --- !u!136 &6805581174905326768
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6589,6 +6606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7846431820336585153}
   collider: {fileID: 2641981354997990542}
+  parent: {fileID: 0}
 --- !u!136 &2641981354997990542
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6658,6 +6676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6924205505542842009}
   collider: {fileID: 258874658509721700}
+  parent: {fileID: 0}
 --- !u!136 &258874658509721700
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6751,6 +6770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3478639508824351249}
   collider: {fileID: 974025800343062789}
+  parent: {fileID: 0}
 --- !u!136 &974025800343062789
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6870,6 +6890,116 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!82 &7185579768045129949
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463358649510633092}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &11238578186882356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463358649510633092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3711a02ee890b87499ea0312f047944d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 2
 --- !u!1 &5487570872301081746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 904139594983476458, guid: d7b33d57d22ebc14c855b87e01198845, type: 3}
@@ -6916,6 +7046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3192649134557895519}
   collider: {fileID: 3427367534527484115}
+  parent: {fileID: 0}
 --- !u!136 &3427367534527484115
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7033,6 +7164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5761314565117401998}
+  collisionAudioSource: {fileID: 7185579768045129949}
+  collisionAudioClip: {fileID: 0}
   colliders:
   - {fileID: 5864588723349906825}
   anim: {fileID: 1279434750264796649}
@@ -7213,6 +7346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6208549413977352442}
   collider: {fileID: 8874587786232900277}
+  parent: {fileID: 0}
 --- !u!136 &8874587786232900277
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7282,6 +7416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5035846986319123651}
   collider: {fileID: 8602794591449839098}
+  parent: {fileID: 0}
 --- !u!136 &8602794591449839098
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7351,6 +7486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7675331362852396796}
   collider: {fileID: 4221674566423417782}
+  parent: {fileID: 0}
 --- !u!136 &4221674566423417782
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7492,6 +7628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3369551655583417230}
   collider: {fileID: 7351880977883935473}
+  parent: {fileID: 0}
 --- !u!136 &7351880977883935473
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7585,6 +7722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1582341302712254006}
   collider: {fileID: 988027019093628120}
+  parent: {fileID: 0}
 --- !u!136 &988027019093628120
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7678,6 +7816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 9177032180137142158}
   collider: {fileID: 6972021285840128170}
+  parent: {fileID: 0}
 --- !u!136 &6972021285840128170
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7771,6 +7910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3994055845001898930}
   collider: {fileID: 6524450117055415432}
+  parent: {fileID: 0}
 --- !u!136 &6524450117055415432
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7864,6 +8004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8862505504058457149}
   collider: {fileID: 9021123452037563572}
+  parent: {fileID: 0}
 --- !u!136 &9021123452037563572
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7962,6 +8103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7204277665795035283}
   collider: {fileID: 1754996931134730553}
+  parent: {fileID: 0}
 --- !u!136 &1754996931134730553
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8055,6 +8197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7707374229717196408}
   collider: {fileID: 1128833874676353854}
+  parent: {fileID: 0}
 --- !u!136 &1128833874676353854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8124,6 +8267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7277462296107958491}
   collider: {fileID: 658921107623094822}
+  parent: {fileID: 0}
 --- !u!136 &658921107623094822
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8217,6 +8361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 83962148928488997}
   collider: {fileID: 4517930265236506494}
+  parent: {fileID: 0}
 --- !u!136 &4517930265236506494
 CapsuleCollider:
   m_ObjectHideFlags: 0

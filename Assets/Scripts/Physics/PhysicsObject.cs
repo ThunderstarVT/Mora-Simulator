@@ -12,6 +12,9 @@ public class PhysicsObject : MonoBehaviour
 
     [Header("Required Components (PhysicsObject)")]
     public Rigidbody rb;
+    [SerializeField] private AudioSource collisionAudioSource;
+    [SerializeField] private AudioClip collisionAudioClip;
+    [SerializeField] private float preLogVolumeMultiplier = 0.005f;
     
     [Header("Settings (PhysicsObject)")]
     [SerializeField] protected List<Collider> colliders;
@@ -20,6 +23,30 @@ public class PhysicsObject : MonoBehaviour
     private void Start()
     {
         Instances.Add(this);
+
+        if (collisionAudioSource)
+        {
+            OnCollisionEnterEvent += collision =>
+            {
+                float reducedMass = rb.mass;
+
+                if (collision.rigidbody)
+                {
+                    reducedMass = (rb.mass * collision.rigidbody.mass) /
+                                  (rb.mass + collision.rigidbody.mass);
+                }
+            
+                float impulse = reducedMass * Vector3.Dot(collision.relativeVelocity, collision.contacts[0].normal);
+
+                float volume = Mathf.Log(1.0f + impulse * preLogVolumeMultiplier);
+
+                if (collisionAudioClip)
+                {
+                    collisionAudioSource.PlayOneShot(collisionAudioClip, volume);
+                    Debug.Log(volume);
+                }
+            };
+        }
     }
 
     private void OnDestroy()
