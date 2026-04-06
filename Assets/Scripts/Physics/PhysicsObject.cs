@@ -15,6 +15,7 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField] private AudioSource collisionAudioSource;
     [SerializeField] private AudioClip collisionAudioClip;
     [SerializeField] private float preLogVolumeMultiplier = 0.005f;
+    [SerializeField] private float volumeThreshold = 0.05f;
     
     [Header("Settings (PhysicsObject)")]
     [SerializeField] protected List<Collider> colliders;
@@ -38,9 +39,9 @@ public class PhysicsObject : MonoBehaviour
             
                 float impulse = reducedMass * Vector3.Dot(collision.relativeVelocity, collision.contacts[0].normal);
 
-                float volume = Mathf.Log(1.0f + impulse * preLogVolumeMultiplier);
+                float volume = Mathf.Log(1.0f + impulse * preLogVolumeMultiplier) - volumeThreshold;
 
-                if (collisionAudioClip)
+                if (collisionAudioClip && volume > 0f)
                 {
                     collisionAudioSource.PlayOneShot(collisionAudioClip, volume);
                     Debug.Log(volume);

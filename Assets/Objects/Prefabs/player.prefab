@@ -7165,7 +7165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5761314565117401998}
   collisionAudioSource: {fileID: 7185579768045129949}
-  collisionAudioClip: {fileID: 0}
+  collisionAudioClip: {fileID: 8300000, guid: b95f0d8288c504a45afead7b79459f5f, type: 3}
+  preLogVolumeMultiplier: 0.005
   colliders:
   - {fileID: 5864588723349906825}
   anim: {fileID: 1279434750264796649}

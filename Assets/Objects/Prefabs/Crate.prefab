@@ -190,7 +190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4041383259068819687}
   collisionAudioSource: {fileID: 7128590782505001544}
-  collisionAudioClip: {fileID: 0}
+  collisionAudioClip: {fileID: 8300000, guid: 0c937f0f5d8621b4b99c9957fa398b6e, type: 3}
+  preLogVolumeMultiplier: 0.005
+  volumeThreshold: 0.05
   colliders:
   - {fileID: 1598419422783830900}
 --- !u!114 &3389499669158845009
