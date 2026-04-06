@@ -1235,8 +1235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac76c0c552a059b4e884c02075d12649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionOrigin: {fileID: 462693182}
-  explosionPower: 100000
+  explosionOrigin: {fileID: 1283524295706670974}
+  explosionPower: 5000
   particlePrefab: {fileID: 0}
 --- !u!114 &462693178
 MonoBehaviour:
@@ -10769,6 +10769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb74005041669e45829ca4684433b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1283524295706670974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5193198386564243025, guid: f666b1c79c9b05847851ba4a0ec972ff, type: 3}
+  m_PrefabInstance: {fileID: 1283524295706670972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3425914922138192437
 PrefabInstance:
   m_ObjectHideFlags: 0
