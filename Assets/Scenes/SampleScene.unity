@@ -1381,6 +1381,8 @@ MonoBehaviour:
   rb: {fileID: 624195941}
   collisionAudioSource: {fileID: 624195948}
   collisionAudioClip: {fileID: 8300000, guid: 22246166a9060714bafb95ee3b1129aa, type: 3}
+  preLogVolumeMultiplier: 0.005
+  volumeThreshold: 0.05
   colliders:
   - {fileID: 624195942}
 --- !u!54 &624195941
@@ -2644,6 +2646,8 @@ MonoBehaviour:
   rb: {fileID: 1071368774}
   collisionAudioSource: {fileID: 1071368780}
   collisionAudioClip: {fileID: 0}
+  preLogVolumeMultiplier: 0.005
+  volumeThreshold: 0.05
   colliders:
   - {fileID: 1071368775}
 --- !u!54 &1071368774
@@ -9893,6 +9897,8 @@ MonoBehaviour:
   rb: {fileID: 1809463093}
   collisionAudioSource: {fileID: 0}
   collisionAudioClip: {fileID: 0}
+  preLogVolumeMultiplier: 0.005
+  volumeThreshold: 0.05
   colliders:
   - {fileID: 1809463094}
 --- !u!54 &1809463093
@@ -10149,6 +10155,7 @@ GameObject:
   - component: {fileID: 1958591497}
   - component: {fileID: 1958591496}
   - component: {fileID: 1958591502}
+  - component: {fileID: 1958591503}
   m_Layer: 0
   m_Name: Ice Cube
   m_TagString: Untagged
@@ -10169,8 +10176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1958591497}
-  collisionAudioSource: {fileID: 0}
-  collisionAudioClip: {fileID: 0}
+  collisionAudioSource: {fileID: 1958591503}
+  collisionAudioClip: {fileID: 8300000, guid: ab7e43501ae8e3248bfe8ef7e41206e4, type: 3}
+  preLogVolumeMultiplier: 0.005
+  volumeThreshold: 0.05
   colliders:
   - {fileID: 1958591498}
 --- !u!54 &1958591497
@@ -10302,6 +10311,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cube
+--- !u!82 &1958591503
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958591495}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1969115134
 PrefabInstance:
   m_ObjectHideFlags: 0

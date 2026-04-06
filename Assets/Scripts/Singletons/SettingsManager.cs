@@ -213,9 +213,9 @@ namespace Singletons
 
         
         public Vector3 MouseSense => new(
-            (mouseInvertX ? -1 : 1) * Mathf.Pow(10f, Mathf.Lerp(0f, 2f, mouseSenseX)), 
-            (mouseInvertY ? -1 : 1) * Mathf.Pow(10f, Mathf.Lerp(0f, 2f, mouseSenseY)),
-            (mouseInvertZ ? -1 : 1) * Mathf.Pow(10f, Mathf.Lerp(0f, 2f, mouseSenseZ)));
+            (mouseInvertX ? -1 : 1) * Mathf.Pow(10f, Mathf.Lerp(-1f, 2f, mouseSenseX)), 
+            (mouseInvertY ? -1 : 1) * Mathf.Pow(10f, Mathf.Lerp(-1f, 2f, mouseSenseY)),
+            (mouseInvertZ ? -1 : 1) * Mathf.Pow(10f, Mathf.Lerp(-1f, 2f, mouseSenseZ)));
 
         public float SfxVolume => sfxVolume;
         public float MusicVolume => musicVolume;
