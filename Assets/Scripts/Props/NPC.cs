@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Ragdoll)), RequireComponent(typeof(Flammable)), RequireComponent(typeof(NameHaver))]
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IEdible
 {
     [SerializeField] private Ragdoll ragdoll;
     [SerializeField] private Flammable flammable;
@@ -29,6 +29,10 @@ public class NPC : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField, Min(0f)] private float groundCheckRadius = 0.25f;
     [SerializeField] private float groundCheckOffset = 0.2f;
+    
+    [Space]
+    [SerializeField] private string eatNpcAchievementSet;
+    [SerializeField] private int eatNpcAchievementIndex;
 
     private Vector3 movement = Vector3.zero;
     private bool scared = false;
@@ -146,5 +150,20 @@ public class NPC : MonoBehaviour
         dead = true;
         
         ScoreTracker.Instance.AwardPoints(100, "kill", "Kill " + nameHaver.Name);
+    }
+    
+
+    public void Eat()
+    {
+        Destroy(gameObject);
+        
+        ScoreTracker.Instance.AwardPoints(25, "eat_npc", "Eat " + nameHaver.Name);
+        
+        AchievementTracker.Instance.AwardAchievement(eatNpcAchievementSet, eatNpcAchievementIndex);
+    }
+    
+    public bool CanEat()
+    {
+        return dead;
     }
 }

@@ -1238,6 +1238,8 @@ MonoBehaviour:
   explosionOrigin: {fileID: 1283524295706670974}
   explosionPower: 5000
   particlePrefab: {fileID: 0}
+  nuclearTacoAchievementSet: Egg1
+  nuclearTacoAchievementIndex: 1
 --- !u!114 &462693178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5100,7 +5102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3440061607037391846, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3186
+      value: -3282.0002
       objectReference: {fileID: 0}
     - target: {fileID: 3461222259454680483, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5748,7 +5750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582901689553735826, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000023543835
+      value: -0.00008355669
       objectReference: {fileID: 0}
     - target: {fileID: 4625340063938417015, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6335,6 +6337,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5461778806827304902, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469164332831460800, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469164332831460800, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469164332831460800, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469164332831460800, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -6471,6 +6489,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5719266457920169418, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720748722906970049, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720748722906970049, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720748722906970049, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720748722906970049, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -7195,6 +7229,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6749281085499383306, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793138144887850382, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793138144887850382, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793138144887850382, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793138144887850382, guid: fb248592c4982b441abbfdcb61d47991, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -11114,66 +11164,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].name
-      value: Trophy1
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[2].name
-      value: Egg1
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description1
-      value: 4 trophies
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description2
-      value: 8 trophies
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description3
-      value: 16 trophies
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description4
-      value: 32 trophies
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description5
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description6
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description7
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[1].description8
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[2].description1
-      value: 5.4 Duodecillion Square Metres
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[2].description2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[2].description3
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 525313389843134085, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
-      propertyPath: achievementSets.Array.data[2].description4
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5319053951852488447, guid: 89222965d2c70ee45b3163b09357cc15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

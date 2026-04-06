@@ -186,21 +186,32 @@ public class PlayerActions : MonoBehaviour
         if (!ragdoll.isRagdolling)
         {
             OnEatEvent?.Invoke();
-            
-            //TODO: eat edible object in sphere that is closest to center
-            // will be added when edible object gets added
 
             Collider[] colliders = Physics.OverlapSphere(eatOrigin.position, eatRadius, 
                 Physics.AllLayers, QueryTriggerInteraction.Collide);
 
             foreach (Collider col in colliders.OrderBy(col => Vector3.Distance(eatOrigin.position, col.bounds.center)))
             {
-                IEdible edible = col.GetComponent<IEdible>();
-
-                if (edible == null) continue;
+                if (col.TryGetComponent(out RagdollBone bone))
+                {
+                    if (bone.parent.TryGetComponent(out IEdible edible))
+                    {
+                        if (!edible.CanEat()) continue;
                 
-                edible.Eat();
-                return;
+                        edible.Eat();
+                        return;
+                    }
+                }
+                else
+                {
+                    if (col.TryGetComponent(out IEdible edible))
+                    {
+                        if (!edible.CanEat()) continue;
+                
+                        edible.Eat();
+                        return;
+                    }
+                }
             }
         }
     }

@@ -35,6 +35,8 @@ public class Ragdoll : PhysicsObject
         foreach (RagdollBone bone in bones)
         {
             bone.OnCollisionEnterEvent += OnCollisionEnter;
+
+            bone.parent = this;
             
             initialBonePoses[bone] = (bone.transform.localPosition, bone.transform.localRotation);
         }

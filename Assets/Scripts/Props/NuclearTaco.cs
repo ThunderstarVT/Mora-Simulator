@@ -6,6 +6,9 @@ public class NuclearTaco : MonoBehaviour, IEdible
     [SerializeField] private Transform explosionOrigin;
     [SerializeField] private float explosionPower;
     [SerializeField] private GameObject particlePrefab;
+    [Space]
+    [SerializeField] private string nuclearTacoAchievementSet;
+    [SerializeField] private int nuclearTacoAchievementIndex;
     
     public void Eat()
     {
@@ -20,6 +23,11 @@ public class NuclearTaco : MonoBehaviour, IEdible
         
         ScoreTracker.Instance.AwardPoints(1000, "nuclear_taco", "Eat " + GetComponent<NameHaver>().Name);
         
-        //TODO: nuclear taco achievement
+        AchievementTracker.Instance.AwardAchievement(nuclearTacoAchievementSet, nuclearTacoAchievementIndex);
+    }
+
+    public bool CanEat()
+    {
+        return true;
     }
 }

@@ -13,6 +13,8 @@ public class RagdollBone : MonoBehaviour
     [SerializeField] private new Collider collider;
     
     public Collider Collider => collider;
+    
+    public Ragdoll parent;
 
     private void OnCollisionEnter(Collision collision)
     {

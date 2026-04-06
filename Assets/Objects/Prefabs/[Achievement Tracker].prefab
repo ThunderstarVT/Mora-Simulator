@@ -167,6 +167,40 @@ MonoBehaviour:
     icon6: {fileID: 0}
     icon7: {fileID: 0}
     icon8: {fileID: 0}
+  - name: Trophy1
+    description1: 4 trophies
+    description2: 8 trophies
+    description3: 16 trophies
+    description4: 32 trophies
+    description5: 
+    description6: 
+    description7: 
+    description8: 
+    icon1: {fileID: 0}
+    icon2: {fileID: 0}
+    icon3: {fileID: 0}
+    icon4: {fileID: 0}
+    icon5: {fileID: 0}
+    icon6: {fileID: 0}
+    icon7: {fileID: 0}
+    icon8: {fileID: 0}
+  - name: Egg1
+    description1: 5.4 Duodecillion Square Metres
+    description2: 1.21 Jigawatts of Regret
+    description3: The Playtesters Wanted Vore...
+    description4: 
+    description5: 
+    description6: 
+    description7: 
+    description8: 
+    icon1: {fileID: 0}
+    icon2: {fileID: 0}
+    icon3: {fileID: 0}
+    icon4: {fileID: 0}
+    icon5: {fileID: 0}
+    icon6: {fileID: 0}
+    icon7: {fileID: 0}
+    icon8: {fileID: 0}
 --- !u!1 &7503605045697702840
 GameObject:
   m_ObjectHideFlags: 0
