@@ -1379,8 +1379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 624195941}
-  collisionAudioSource: {fileID: 624195948}
-  collisionAudioClip: {fileID: 8300000, guid: 22246166a9060714bafb95ee3b1129aa, type: 3}
+  collisionAudioSource: {fileID: 0}
+  collisionAudioClip: {fileID: 0}
   preLogVolumeMultiplier: 0.005
   volumeThreshold: 0.05
   colliders:
@@ -2644,7 +2644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1071368774}
-  collisionAudioSource: {fileID: 1071368780}
+  collisionAudioSource: {fileID: 0}
   collisionAudioClip: {fileID: 0}
   preLogVolumeMultiplier: 0.005
   volumeThreshold: 0.05
@@ -10176,8 +10176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1958591497}
-  collisionAudioSource: {fileID: 1958591503}
-  collisionAudioClip: {fileID: 8300000, guid: ab7e43501ae8e3248bfe8ef7e41206e4, type: 3}
+  collisionAudioSource: {fileID: 0}
+  collisionAudioClip: {fileID: 0}
   preLogVolumeMultiplier: 0.005
   volumeThreshold: 0.05
   colliders:

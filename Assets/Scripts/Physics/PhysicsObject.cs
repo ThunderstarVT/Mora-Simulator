@@ -41,22 +41,14 @@ public class PhysicsObject : MonoBehaviour
 
                 float volume = Mathf.Log(1.0f + impulse * preLogVolumeMultiplier) - volumeThreshold;
 
-                if (collisionAudioClip && volume > 0f)
-                {
-                    collisionAudioSource.PlayOneShot(collisionAudioClip, volume);
-                    Debug.Log(volume);
-                }
+                if (collisionAudioClip && volume > 0f) collisionAudioSource.PlayOneShot(collisionAudioClip, volume);
             };
 
             OnKickedEvent += impulse =>
             {
                 float volume = Mathf.Log(1.0f + impulse * preLogVolumeMultiplier) - volumeThreshold;
 
-                if (collisionAudioClip && volume > 0f)
-                {
-                    collisionAudioSource.PlayOneShot(collisionAudioClip, volume);
-                    Debug.Log(volume);
-                }
+                if (collisionAudioClip && volume > 0f) collisionAudioSource.PlayOneShot(collisionAudioClip, volume);
             };
         }
     }
