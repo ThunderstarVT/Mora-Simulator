@@ -146,7 +146,7 @@ public class PhysicsObject : MonoBehaviour
         // calculate the overlapping volume
         float overlapVolume = BoundsVolume(intersectBounds) * samplesInside.Count / samplePoints.Count;
         
-        // calculate buoyant force and centre of volume
+        // calculate buoyant force and centre of volume - centre of volume with aggregate because sum doesn't work with vec3
         Vector3 buoyantForce = -overlapVolume * density * Physics.gravity;
         Vector3 cov = samplesInside.Aggregate(Vector3.zero, (sum, sample) => sum + sample) / samplesInside.Count; // center of volume (estimated as average of samples inside collider)
         
