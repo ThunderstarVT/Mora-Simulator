@@ -785,6 +785,7 @@ MonoBehaviour:
   collisionAudioSource: {fileID: 507772517689907969}
   collisionAudioClip: {fileID: 8300000, guid: b95f0d8288c504a45afead7b79459f5f, type: 3}
   preLogVolumeMultiplier: 0.005
+  volumeThreshold: 0.05
   colliders:
   - {fileID: 6697648646319636908}
   anim: {fileID: 6172238655600732037}
@@ -935,6 +936,8 @@ MonoBehaviour:
   groundCheckOffset: 0.2
   eatNpcAchievementSet: Egg1
   eatNpcAchievementIndex: 2
+  eggSpawnPos: {fileID: 0}
+  eggPrefab: {fileID: 2349962974018267496, guid: cb54248d027501b4abf5396306bd9a64, type: 3}
 --- !u!4 &812968457802140061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8103495863266946167, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}

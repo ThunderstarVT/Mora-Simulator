@@ -34,6 +34,10 @@ public class NPC : MonoBehaviour, IEdible
     [SerializeField] private string eatNpcAchievementSet;
     [SerializeField] private int eatNpcAchievementIndex;
 
+    [Space] 
+    [SerializeField] private Transform eggSpawnPos;
+    [SerializeField] private GameObject eggPrefab;
+
     private Vector3 movement = Vector3.zero;
     private bool scared = false;
     private bool dead = false;
@@ -155,6 +159,10 @@ public class NPC : MonoBehaviour, IEdible
 
     public void Eat()
     {
+        GameObject egg = Instantiate(eggPrefab, eggSpawnPos.position, eggSpawnPos.rotation);
+        Material material = egg.GetComponent<Renderer>().material;
+        material.SetColor("_BaseColor", new Color(Random.value, Random.value, Random.value));
+        
         Destroy(gameObject);
         
         ScoreTracker.Instance.AwardPoints(25, "eat_npc", "Eat " + nameHaver.Name);
